@@ -10,8 +10,12 @@
 
 ## 現在の状態
 
-要件定義への着手判断を受け、企画を確認しています。正式Baseline、Work Request、実装、正式Releaseはまだありません。Google Driveの資料フォルダは指定済みですが、企画書はまだローカルにあり、未アップロードです。
+要件定義への着手判断を受け、企画を確認しています。正式Baseline、Work Request、実装、正式Releaseはまだありません。[企画書のたたき台](https://docs.google.com/document/d/1aF1DgGNbICm91RVcFGJmxwFJXk4o6nd_YSgn1BgfB1k)をGoogle Driveの「01 企画」に保存しています。
 
 本初期Commitはリポジトリを使い始めるための案内のみです。Releaseからの正式状態の同期や、正式Baselineの成立を意味しません。開発要求の記録は作業ブランチで管理し、mainへ途中成果物を集約しません。
 
 本リポジトリは依頼者の判断により公開で運用します。
+
+## 開発要求
+
+[DR-KARATE-001の開発要求と判断記録](planning/requests/DR-KARATE-001/)をこの作業ブランチで管理します。
