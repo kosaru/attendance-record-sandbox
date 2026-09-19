@@ -1,6 +1,6 @@
 {
   "title": "試作品の保存・復旧・訂正の運用案",
-  "status": "proposal",
+  "status": "operating-policy-agreed",
   "sections": [
     {
       "title": "保存する場所",
@@ -128,16 +128,21 @@
       ]
     }
   ],
-  "decision_required": [
-    "既存DigitalOcean＋SQLiteで通常保存、Driveへ毎日1回・7日分バックアップ。最後の成功以降の記録が障害時に失われ得る条件。",
-    "依頼者が訂正を判断し保守操作する。過去出席の新規追加はしない。",
-    "指定した少人数・架空の会員名で試す。試作終了後30日以内に試作データ一式を削除し本番移行しない。"
-  ],
+  "decision_required": [],
   "deployment_authorized": false,
   "formal_baseline": null,
   "sources": [
     "https://www.sqlite.org/whentouse.html",
     "https://www.sqlite.org/backup.html",
     "https://docs.digitalocean.com/products/droplets/details/pricing/"
-  ]
+  ],
+  "human_decision": {
+    "quote": "ok",
+    "scope": [
+      "既存DigitalOcean＋SQLiteで通常保存、Driveへ毎日1回・7日分バックアップ。最後の成功以降の記録が障害時に失われ得る条件。",
+      "依頼者が訂正を判断し保守操作する。過去出席の新規追加はしない。",
+      "指定した少人数・架空の会員名で試す。試作終了後30日以内に試作データ一式を削除し本番移行しない。"
+    ],
+    "note": "提示した3点の試作運用方針への了承。環境設定・正式Baseline・配置の承認ではない。"
+  }
 }
