@@ -1,0 +1,210 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-02
+name: 本人・家族を登録して選ぶ
+workset_id: WS-KARATE-02
+artifact_status: review
+source_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: other
+  repository_path: planning/review/index.html
+  source_location: '#ws02'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: cfbb27ca82aca89c211e843d83bf5860be5823dc
+human_representation:
+  mermaid_source_path: planning/review/diagrams/ifdam-02.mmd
+  rendered_diagram_paths:
+  - planning/review/diagrams/INT-KARATE-02-01.svg
+  - planning/review/diagrams/INT-KARATE-02-02.svg
+  - planning/review/diagrams/INT-KARATE-02-03.svg
+  - planning/review/diagrams/INT-KARATE-02-04.svg
+  review_document_paths:
+  - planning/review/index.html#ws02
+  mapping_manifest_path: planning/review/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 本人・家族の記録対象を選ぶ
+  available_actions:
+  - 会員選択
+  - 追加
+  displayed_information:
+  - 会員名
+  - 年間回数
+- interface_id: UI-KARATE-03
+  name: 会員登録
+  interface_type: screen
+  business_purpose: 名前だけで本人・家族を追加する
+  available_actions:
+  - 名前入力
+  - 登録
+  - 戻る
+  displayed_information:
+  - 名前
+- interface_id: UI-KARATE-04
+  name: 出席帳
+  interface_type: screen
+  business_purpose: スタンプと年間回数を確認する
+  available_actions:
+  - 年選択
+  - QRを読む
+  - 会員変更
+  - 訂正案内
+  displayed_information:
+  - 会員名
+  - 年
+  - 回数
+  - 道場名
+  - 出席日
+events:
+- event_id: EVT-KARATE-02-01
+  name: 会員を登録
+  source_interface_id: UI-KARATE-03
+  business_trigger: 会員を登録
+  input_information: &id001
+  - ログイン中アカウント
+  - 名前
+- event_id: EVT-KARATE-02-02
+  name: 空欄・登録失敗
+  source_interface_id: UI-KARATE-03
+  business_trigger: 空欄・登録失敗
+  input_information: *id001
+- event_id: EVT-KARATE-02-03
+  name: 会員を選択
+  source_interface_id: UI-KARATE-02
+  business_trigger: 会員を選択
+  input_information: &id002
+  - 会員
+- event_id: EVT-KARATE-02-04
+  name: 対象なし・他人の会員
+  source_interface_id: UI-KARATE-02
+  business_trigger: 対象なし・他人の会員
+  input_information: *id002
+functions:
+- function_id: FN-KARATE-02
+  name: 本人・家族を登録する
+  business_purpose: 本人・家族を登録する
+  inputs: *id001
+  outputs:
+  - 会員一覧へ追加
+  business_rules:
+  - 名前は必須
+  - 同名を自動統合しない
+  - 名簿照合・責任者承認・一括出席は対象外
+  normal_result:
+  - 会員一覧へ追加
+  exception_results:
+  - 空欄・保存失敗では追加完了を表示しない
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-03
+  name: 会員を選ぶ
+  business_purpose: 会員を選ぶ
+  inputs: *id002
+  outputs:
+  - 所有する会員の出席帳を表示
+  business_rules:
+  - 他アカウントの会員は閲覧・変更不可
+  normal_result:
+  - 所有する会員の出席帳を表示
+  exception_results:
+  - 対象なし・権限なしは記録を見せず一覧へ戻る
+  source_locations:
+  - planning/review/index.html#functions
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleで本人確認する利用者
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 1アカウントに属する本人・子ども
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 固定QRと道場名の対応
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の出席日で識別する記録
+  conceptual_model_reference: planning/review/index.html#data
+interactions:
+- interaction_id: INT-KARATE-02-01
+  name: 会員を登録
+  flow_type: normal
+  start_interface_id: UI-KARATE-03
+  event_id: EVT-KARATE-02-01
+  function_id: FN-KARATE-02
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 認証済み・名前入力あり
+  expected_results:
+  - 名前だけで本人または家族を1人追加。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-02-01
+- interaction_id: INT-KARATE-02-02
+  name: 空欄・登録失敗
+  flow_type: exception
+  start_interface_id: UI-KARATE-03
+  event_id: EVT-KARATE-02-02
+  function_id: FN-KARATE-02
+  data_store_operations: []
+  end_interface_id: UI-KARATE-03
+  preconditions: []
+  expected_results:
+  - 空欄なら入力を案内。保存できないときは登録完了を表示しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-02-02
+- interaction_id: INT-KARATE-02-03
+  name: 会員を選択
+  flow_type: normal
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-02-03
+  function_id: FN-KARATE-03
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  end_interface_id: UI-KARATE-04
+  preconditions:
+  - 対象会員を所有
+  expected_results:
+  - 自分の会員の出席帳を表示。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-02-03
+- interaction_id: INT-KARATE-02-04
+  name: 対象なし・他人の会員
+  flow_type: exception
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-02-04
+  function_id: FN-KARATE-03
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions: []
+  expected_results:
+  - 記録を開かず一覧へ戻る。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-02-04
+unknowns: []

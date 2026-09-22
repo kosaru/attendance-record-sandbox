@@ -1,0 +1,15 @@
+erDiagram
+  ACCOUNT ||--o{ MEMBER : owns
+  MEMBER ||--o{ ATTENDANCE : records
+  DOJO ||--o{ ATTENDANCE : identifies
+  ATTENDANCE ||--o{ CORRECTION : history
+  MEMBER ||--o{ CORRECTION : name_history
+  MEMBER ||--o{ OPERATION : checks
+  DOJO ||--o{ OPERATION : target
+  ATTENDANCE o|--o{ OPERATION : result
+  ACCOUNT { string account_id PK string google_identity UK }
+  MEMBER { string member_id PK string account_id FK string name }
+  DOJO { string dojo_id PK string name string qr_reference UK }
+  ATTENDANCE { string attendance_id PK string member_id FK string dojo_id FK date attendance_day datetime recorded_at string state }
+  OPERATION { string operation_id PK string member_id FK string dojo_id FK string attendance_id FK date accepted_day string result }
+  CORRECTION { string target_reference string before_value string after_value string reason string actor datetime changed_at }

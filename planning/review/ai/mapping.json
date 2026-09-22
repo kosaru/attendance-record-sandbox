@@ -1,0 +1,560 @@
+{
+  "artifact_mapping": {
+    "mapping_id": "MAP-KARATE-REVIEW-01",
+    "title": "要件・IFDAM・人間向け資料の対応",
+    "scope": {
+      "development_request_ids": [
+        "DR-KARATE-001"
+      ],
+      "workset_ids": [
+        "WS-KARATE-01",
+        "WS-KARATE-02",
+        "WS-KARATE-03",
+        "WS-KARATE-04",
+        "WS-KARATE-05"
+      ],
+      "ifdam_ids": [
+        "IFDAM-KARATE-01",
+        "IFDAM-KARATE-02",
+        "IFDAM-KARATE-03",
+        "IFDAM-KARATE-04",
+        "IFDAM-KARATE-05"
+      ]
+    },
+    "ai_sources": [
+      {
+        "source_id": "IFDAM-KARATE-01",
+        "role": "handoff-representation",
+        "format": "yaml",
+        "file_path": "planning/review/ai/ifdam-01.yaml"
+      },
+      {
+        "source_id": "IFDAM-KARATE-02",
+        "role": "handoff-representation",
+        "format": "yaml",
+        "file_path": "planning/review/ai/ifdam-02.yaml"
+      },
+      {
+        "source_id": "IFDAM-KARATE-03",
+        "role": "handoff-representation",
+        "format": "yaml",
+        "file_path": "planning/review/ai/ifdam-03.yaml"
+      },
+      {
+        "source_id": "IFDAM-KARATE-04",
+        "role": "handoff-representation",
+        "format": "yaml",
+        "file_path": "planning/review/ai/ifdam-04.yaml"
+      },
+      {
+        "source_id": "IFDAM-KARATE-05",
+        "role": "handoff-representation",
+        "format": "yaml",
+        "file_path": "planning/review/ai/ifdam-05.yaml"
+      }
+    ],
+    "human_outputs": [
+      {
+        "artifact_id": "HA-KARATE-REVIEW-01",
+        "purpose": "review",
+        "format": "pdf",
+        "file_path": "planning/review/要件とIFDAM.pdf",
+        "generated_from_source_ids": [
+          "IFDAM-KARATE-01",
+          "IFDAM-KARATE-02",
+          "IFDAM-KARATE-03",
+          "IFDAM-KARATE-04",
+          "IFDAM-KARATE-05"
+        ]
+      }
+    ],
+    "field_mappings": [
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "interactions.INT-KARATE-01-01",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-01-01"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "interactions.INT-KARATE-01-02",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-01-02"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "interactions.INT-KARATE-02-01",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-02-01"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "interactions.INT-KARATE-02-02",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-02-02"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "interactions.INT-KARATE-02-03",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-02-03"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "interactions.INT-KARATE-02-04",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-02-04"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-01",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-01"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-02",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-02"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-03",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-03"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-04",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-04"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-05",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-05"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-06",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-06"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-07",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-07"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-08",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-08"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interactions.INT-KARATE-03-09",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-03-09"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "interactions.INT-KARATE-04-01",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-04-01"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "interactions.INT-KARATE-04-02",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-04-02"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "interactions.INT-KARATE-04-03",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-04-03"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-01",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-01"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-02",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-02"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-03",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-03"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-04",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-04"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-05",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-05"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-06",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-06"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-07",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-07"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-08",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-08"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interactions.INT-KARATE-05-09",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "INT-KARATE-05-09"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "interfaces",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "6. UIと仕事のまとまり"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "events",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "9. IFDAMの図中の操作"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "functions",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "7. 機能"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "data_stores",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "8. データ定義とERD"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-01",
+        "ai_location": "unknowns",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "12. 判断箇所"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "interfaces",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "6. UIと仕事のまとまり"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "events",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "9. IFDAMの図中の操作"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "functions",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "7. 機能"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "data_stores",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "8. データ定義とERD"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-02",
+        "ai_location": "unknowns",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "12. 判断箇所"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "interfaces",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "6. UIと仕事のまとまり"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "events",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "9. IFDAMの図中の操作"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "functions",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "7. 機能"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "data_stores",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "8. データ定義とERD"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-03",
+        "ai_location": "unknowns",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "12. 判断箇所"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "interfaces",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "6. UIと仕事のまとまり"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "events",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "9. IFDAMの図中の操作"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "functions",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "7. 機能"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "data_stores",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "8. データ定義とERD"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-04",
+        "ai_location": "unknowns",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "12. 判断箇所"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "interfaces",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "6. UIと仕事のまとまり"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "events",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "9. IFDAMの図中の操作"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "functions",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "7. 機能"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "data_stores",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "8. データ定義とERD"
+        }
+      },
+      {
+        "ai_source_id": "IFDAM-KARATE-05",
+        "ai_location": "unknowns",
+        "human_artifact_id": "HA-KARATE-REVIEW-01",
+        "human_location": {
+          "kind": "section",
+          "reference": "12. 判断箇所"
+        }
+      }
+    ],
+    "generation": {
+      "tool": "build_review.py + Mermaid 11.12.0 + Chromium",
+      "reproducible": true
+    },
+    "synchronization": {
+      "status": "synchronized",
+      "last_verified_at": "2026-09-22",
+      "verified_against_commit": "cfbb27ca82aca89c211e843d83bf5860be5823dc",
+      "unresolved_differences": []
+    },
+    "approval": {
+      "status": "review",
+      "approved_by_human": false
+    },
+    "conflict_rule": {
+      "interpretation_priority": "approved-human-artifact",
+      "required_action": "update-ai-source-and-regenerate"
+    }
+  }
+}

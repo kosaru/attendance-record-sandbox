@@ -1,0 +1,185 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-04
+name: 出席記録を確認する
+workset_id: WS-KARATE-04
+artifact_status: review
+source_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: other
+  repository_path: planning/review/index.html
+  source_location: '#ws04'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: cfbb27ca82aca89c211e843d83bf5860be5823dc
+human_representation:
+  mermaid_source_path: planning/review/diagrams/ifdam-04.mmd
+  rendered_diagram_paths:
+  - planning/review/diagrams/INT-KARATE-04-01.svg
+  - planning/review/diagrams/INT-KARATE-04-02.svg
+  - planning/review/diagrams/INT-KARATE-04-03.svg
+  review_document_paths:
+  - planning/review/index.html#ws04
+  mapping_manifest_path: planning/review/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-04
+  name: 出席帳
+  interface_type: screen
+  business_purpose: スタンプと年間回数を確認する
+  available_actions:
+  - 年選択
+  - QRを読む
+  - 会員変更
+  - 訂正案内
+  displayed_information:
+  - 会員名
+  - 年
+  - 回数
+  - 道場名
+  - 出席日
+- interface_id: UI-KARATE-07
+  name: 結果不明・エラー案内
+  interface_type: screen
+  business_purpose: 成功と未確認を区別して次の行動を案内する
+  available_actions:
+  - 保存結果を確認
+  - 戻る
+  displayed_information:
+  - 結果不明
+  - 失敗理由
+- interface_id: UI-KARATE-08
+  name: 訂正連絡案内
+  interface_type: screen
+  business_purpose: 試作担当者への直接連絡を案内する
+  available_actions:
+  - 出席帳へ戻る
+  displayed_information:
+  - 記録の訂正は試作担当者に連絡してください
+events:
+- event_id: EVT-KARATE-04-01
+  name: 年間記録を表示
+  source_interface_id: UI-KARATE-04
+  business_trigger: 年間記録を表示
+  input_information: &id001
+  - 会員
+  - 対象年
+- event_id: EVT-KARATE-04-02
+  name: 記録の取得失敗
+  source_interface_id: UI-KARATE-04
+  business_trigger: 記録の取得失敗
+  input_information: *id001
+- event_id: EVT-KARATE-04-03
+  name: 訂正の連絡先を表示
+  source_interface_id: UI-KARATE-04
+  business_trigger: 訂正の連絡先を表示
+  input_information: &id002
+  - 訂正案内の選択
+functions:
+- function_id: FN-KARATE-05
+  name: 記録と年間回数を取得する
+  business_purpose: 記録と年間回数を取得する
+  inputs: *id001
+  outputs:
+  - スタンプと年間件数を表示
+  business_rules:
+  - 日本時間1月1日〜12月31日
+  - 同日2道場は2回
+  - 取消分は除外
+  - 0件と取得失敗を区別
+  normal_result:
+  - スタンプと年間件数を表示
+  exception_results:
+  - 失敗時に0回と表示しない
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-07
+  name: 訂正連絡を案内する
+  business_purpose: 訂正連絡を案内する
+  inputs: *id002
+  outputs:
+  - 試作担当者への直接連絡を案内
+  business_rules:
+  - 利用者の自由編集・削除は提供しない
+  - アプリから自動送信しない
+  normal_result:
+  - 試作担当者への直接連絡を案内
+  exception_results: []
+  source_locations:
+  - planning/review/index.html#functions
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 1アカウントに属する本人・子ども
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 固定QRと道場名の対応
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の出席日で識別する記録
+  conceptual_model_reference: planning/review/index.html#data
+interactions:
+- interaction_id: INT-KARATE-04-01
+  name: 年間記録を表示
+  flow_type: normal
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-04-01
+  function_id: FN-KARATE-05
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  end_interface_id: UI-KARATE-04
+  preconditions:
+  - 対象会員を所有
+  expected_results:
+  - 対象年の有効な出席を表示。同日2道場は2回。0件なら0回。
+  unknown_ids:
+  - U02
+  source_locations:
+  - planning/review/index.html#INT-KARATE-04-01
+- interaction_id: INT-KARATE-04-02
+  name: 記録の取得失敗
+  flow_type: exception
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-04-02
+  function_id: FN-KARATE-05
+  data_store_operations: []
+  end_interface_id: UI-KARATE-07
+  preconditions: []
+  expected_results:
+  - 取得失敗を表示。0回や空の出席帳として扱わない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-04-02
+- interaction_id: INT-KARATE-04-03
+  name: 訂正の連絡先を表示
+  flow_type: normal
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-04-03
+  function_id: FN-KARATE-07
+  data_store_operations: []
+  end_interface_id: UI-KARATE-08
+  preconditions: []
+  expected_results:
+  - 「記録の訂正は試作担当者に連絡してください」を表示。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-04-03
+unknowns:
+- unknown_id: U02
+  description: 道場名変更時、過去スタンプを当時の名称で残すか最新名称へ変えるか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-03-01
+  - INT-KARATE-04-01
+  blocking: true
+  decision_owner: 依頼者
+  status: open

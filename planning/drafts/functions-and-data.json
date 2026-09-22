@@ -195,5 +195,7 @@
   "attendance_date_decision": {
     "quote": "OK",
     "rule": "出席日はサーバーが登録を受け付けた時点の日本時間。受付済み操作の再確認は最初の日付を維持。"
-  }
+  },
+  "superseded_for_current_review_by": "planning/review/ai/review-model.json",
+  "historical_source": true
 }

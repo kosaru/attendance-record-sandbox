@@ -1,5 +1,17 @@
 # 空手道場出席アプリ Sandbox
 
+現在の要件確認入口: [要件・IFDAM・データ・対応表](planning/review/index.html) / [固定版PDF](planning/review/要件とIFDAM.pdf)
+
+IFDAM 5件・27 Interactionを含む確認版です。正式Baseline、Work Request、設計・実装・公開は未成立。U01/U02が回答待ちです。
+
+過去資料はplanning/drafts、planning/humanおよびplanning/requestsに履歴として残しています。内容の現状はplanning/reviewを参照してください。
+
+---
+
+## 以前の案内（履歴）
+
+# 空手道場出席アプリ Sandbox
+
 設計・実装・テストと開発要求を管理する作業用リポジトリです。
 
 ## 保存先

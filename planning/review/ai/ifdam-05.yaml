@@ -1,0 +1,525 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-05
+name: 試作データを準備・保全する
+workset_id: WS-KARATE-05
+artifact_status: review
+source_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: other
+  repository_path: planning/review/index.html
+  source_location: '#ws05'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: cfbb27ca82aca89c211e843d83bf5860be5823dc
+human_representation:
+  mermaid_source_path: planning/review/diagrams/ifdam-05.mmd
+  rendered_diagram_paths:
+  - planning/review/diagrams/INT-KARATE-05-01.svg
+  - planning/review/diagrams/INT-KARATE-05-02.svg
+  - planning/review/diagrams/INT-KARATE-05-03.svg
+  - planning/review/diagrams/INT-KARATE-05-04.svg
+  - planning/review/diagrams/INT-KARATE-05-05.svg
+  - planning/review/diagrams/INT-KARATE-05-06.svg
+  - planning/review/diagrams/INT-KARATE-05-07.svg
+  - planning/review/diagrams/INT-KARATE-05-08.svg
+  - planning/review/diagrams/INT-KARATE-05-09.svg
+  review_document_paths:
+  - planning/review/index.html#ws05
+  mapping_manifest_path: planning/review/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-09
+  name: 保守操作
+  interface_type: other
+  business_purpose: 依頼者の判断に基づき準備・訂正・取消を行う
+  available_actions:
+  - 対象確認
+  - 実行
+  displayed_information:
+  - 対象
+  - 変更内容
+  - 理由
+  - 担当
+  - 結果
+- interface_id: IF-KARATE-10
+  name: 定期バックアップ
+  interface_type: batch
+  business_purpose: 日次の保全処理を開始する
+  available_actions:
+  - 毎日1回
+  displayed_information:
+  - 対象データと保存先
+- interface_id: IF-KARATE-11
+  name: 運用結果
+  interface_type: other
+  business_purpose: 保守・バックアップ・復旧・削除の成否を確認する
+  available_actions:
+  - 結果確認
+  displayed_information:
+  - 成功／失敗
+  - 対象
+  - 日時
+- interface_id: IF-KARATE-12
+  name: 復旧・終了指示
+  interface_type: other
+  business_purpose: 依頼者の復旧判断または試作終了判断を受ける
+  available_actions:
+  - 復旧
+  - 試作終了
+  displayed_information:
+  - 対象バックアップ／終了日
+events:
+- event_id: EVT-KARATE-05-01
+  name: 参加者・道場・QRの準備
+  source_interface_id: IF-KARATE-09
+  business_trigger: 参加者・道場・QRの準備
+  input_information: &id005
+  - 依頼者指定の参加者
+  - 試験用道場名
+- event_id: EVT-KARATE-05-02
+  name: 訂正・取消を反映
+  source_interface_id: IF-KARATE-09
+  business_trigger: 訂正・取消を反映
+  input_information: &id001
+  - 依頼者の判断
+  - 対象
+  - 変更内容
+  - 理由
+  - 担当
+- event_id: EVT-KARATE-05-03
+  name: 訂正先重複・権限なし・保存失敗
+  source_interface_id: IF-KARATE-09
+  business_trigger: 訂正先重複・権限なし・保存失敗
+  input_information: *id001
+- event_id: EVT-KARATE-05-04
+  name: 日次コピーを保存
+  source_interface_id: IF-KARATE-10
+  business_trigger: 日次コピーを保存
+  input_information: &id002
+  - 通常保存データ
+- event_id: EVT-KARATE-05-05
+  name: バックアップ失敗
+  source_interface_id: IF-KARATE-10
+  business_trigger: バックアップ失敗
+  input_information: *id002
+- event_id: EVT-KARATE-05-06
+  name: 記録を復旧
+  source_interface_id: IF-KARATE-12
+  business_trigger: 記録を復旧
+  input_information: &id003
+  - 依頼者の復旧判断
+  - 正常バックアップ
+- event_id: EVT-KARATE-05-07
+  name: 復旧確認に失敗
+  source_interface_id: IF-KARATE-12
+  business_trigger: 復旧確認に失敗
+  input_information: *id003
+- event_id: EVT-KARATE-05-08
+  name: 試作終了データの削除
+  source_interface_id: IF-KARATE-12
+  business_trigger: 試作終了データの削除
+  input_information: &id004
+  - 依頼者が決めた終了日
+- event_id: EVT-KARATE-05-09
+  name: 削除未完了
+  source_interface_id: IF-KARATE-12
+  business_trigger: 削除未完了
+  input_information: *id004
+functions:
+- function_id: FN-KARATE-08
+  name: 試作参加者と道場を準備する
+  business_purpose: 試作参加者と道場を準備する
+  inputs: *id005
+  outputs:
+  - 参加許可と固定QRを用意
+  business_rules:
+  - 依頼者が配布、道場責任者が掲示
+  - 一般利用者が道場を追加しない
+  - 準備画面を一般公開しない
+  normal_result:
+  - 参加許可と固定QRを用意
+  exception_results:
+  - 重複するQR対応は登録しない
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-09
+  name: 誤登録を訂正・取消する
+  business_purpose: 誤登録を訂正・取消する
+  inputs: *id001
+  outputs:
+  - 訂正結果と履歴を保存
+  business_rules:
+  - 変更前後・理由・担当・日時を残す
+  - 未登録の過去出席を追加しない
+  - 訂正先が重複なら中止して確認
+  - 取消分はスタンプと集計から除外
+  - 名前修正も依頼者への連絡で扱う
+  normal_result:
+  - 訂正結果と履歴を保存
+  exception_results:
+  - 権限なし・対象なし・履歴を含め保存できない場合は変更完了にしない
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-10
+  name: 日次バックアップを作る
+  business_purpose: 日次バックアップを作る
+  inputs: *id002
+  outputs:
+  - 非公開Driveに復元用コピーを保存
+  business_rules:
+  - 毎日1回・直近7日分
+  - 整合したコピーと転送完了を確認
+  - 失敗時は直前正常コピーを残し古いコピーの削除を進めない
+  - ログインの一時情報・パスワードは含めない
+  normal_result:
+  - 非公開Driveに復元用コピーを保存
+  exception_results:
+  - 失敗を運用結果に残して依頼者が確認
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-11
+  name: バックアップから復旧する
+  business_purpose: バックアップから復旧する
+  inputs: *id003
+  outputs:
+  - 復元した記録を確認
+  business_rules:
+  - 最後の正常バックアップ以降は失われ得る
+  - 件数・年間回数・アカウント対応を別の試験環境で確認
+  - 復旧時間は保証しない
+  normal_result:
+  - 復元した記録を確認
+  exception_results:
+  - 破損・不整合なら復旧完了にしない
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-12
+  name: 試作終了データを削除する
+  business_purpose: 試作終了データを削除する
+  inputs: *id004
+  outputs:
+  - 終了後30日以内に試作データ一式を削除
+  business_rules:
+  - 通常保存・Driveコピー・訂正履歴・アカウント識別情報を対象
+  - 本番移行しない
+  - 復元試験用コピーも対象
+  normal_result:
+  - 終了後30日以内に試作データ一式を削除
+  exception_results:
+  - 削除失敗は未完了として追跡
+  source_locations:
+  - planning/review/index.html#functions
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleで本人確認する利用者
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 1アカウントに属する本人・子ども
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 固定QRと道場名の対応
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の出席日で識別する記録
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-05
+  name: 処理結果確認情報
+  business_meaning: 通信途絶後に元の操作を照合する情報
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-06
+  name: 訂正履歴
+  business_meaning: 変更前後・理由・担当・日時
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-07
+  name: バックアップ
+  business_meaning: 通常保存の復元可能なコピー。Googleログインの一時情報は含めない
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定した試作参加者
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-09
+  name: 運用記録
+  business_meaning: バックアップ・復旧・終了削除の実施結果
+  conceptual_model_reference: planning/review/index.html#data
+interactions:
+- interaction_id: INT-KARATE-05-01
+  name: 参加者・道場・QRの準備
+  flow_type: normal
+  start_interface_id: IF-KARATE-09
+  event_id: EVT-KARATE-05-01
+  function_id: FN-KARATE-08
+  data_store_operations:
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - R
+    - U
+  end_interface_id: IF-KARATE-11
+  preconditions:
+  - 依頼者の指定
+  expected_results:
+  - 指定テスターと試験用道場・QRを用意して依頼者へ結果を返す。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-01
+- interaction_id: INT-KARATE-05-02
+  name: 訂正・取消を反映
+  flow_type: normal
+  start_interface_id: IF-KARATE-09
+  event_id: EVT-KARATE-05-02
+  function_id: FN-KARATE-09
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+  end_interface_id: IF-KARATE-11
+  preconditions:
+  - 対象・理由・担当・変更前後を確認
+  expected_results:
+  - 依頼者が決めた変更と履歴を保存。取消は記録状態で表し集計から除外。
+  unknown_ids:
+  - U01
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-02
+- interaction_id: INT-KARATE-05-03
+  name: 訂正先重複・権限なし・保存失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-09
+  event_id: EVT-KARATE-05-03
+  function_id: FN-KARATE-09
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  end_interface_id: IF-KARATE-11
+  preconditions: []
+  expected_results:
+  - 訂正を完了せず理由を返す。重複は依頼者が再確認する。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-03
+- interaction_id: INT-KARATE-05-04
+  name: 日次コピーを保存
+  flow_type: normal
+  start_interface_id: IF-KARATE-10
+  event_id: EVT-KARATE-05-04
+  function_id: FN-KARATE-10
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  - data_store_id: DS-KARATE-06
+    operations:
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  - data_store_id: DS-KARATE-07
+    operations:
+    - C
+    - R
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-11
+  preconditions: []
+  expected_results:
+  - 正常コピーをDriveへ保存し一致を確認。成功時だけ保持世代を整理。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-04
+- interaction_id: INT-KARATE-05-05
+  name: バックアップ失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-10
+  event_id: EVT-KARATE-05-05
+  function_id: FN-KARATE-10
+  data_store_operations:
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-11
+  preconditions: []
+  expected_results:
+  - 失敗を記録。前回正常コピーを保持し依頼者が結果を確認。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-05
+- interaction_id: INT-KARATE-05-06
+  name: 記録を復旧
+  flow_type: normal
+  start_interface_id: IF-KARATE-12
+  event_id: EVT-KARATE-05-06
+  function_id: FN-KARATE-11
+  data_store_operations:
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-04
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-05
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - R
+    - U
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-11
+  preconditions:
+  - 依頼者が復旧対象と影響を確認
+  expected_results:
+  - 復旧対象時点と失われる期間を示し、件数・年間回数・本人対応を確認する。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-06
+- interaction_id: INT-KARATE-05-07
+  name: 復旧確認に失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-12
+  event_id: EVT-KARATE-05-07
+  function_id: FN-KARATE-11
+  data_store_operations:
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-11
+  preconditions: []
+  expected_results:
+  - 復旧完了にせず失敗を報告する。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-07
+- interaction_id: INT-KARATE-05-08
+  name: 試作終了データの削除
+  flow_type: normal
+  start_interface_id: IF-KARATE-12
+  event_id: EVT-KARATE-05-08
+  function_id: FN-KARATE-12
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - D
+  - data_store_id: DS-KARATE-02
+    operations:
+    - D
+  - data_store_id: DS-KARATE-03
+    operations:
+    - D
+  - data_store_id: DS-KARATE-04
+    operations:
+    - D
+  - data_store_id: DS-KARATE-05
+    operations:
+    - D
+  - data_store_id: DS-KARATE-06
+    operations:
+    - D
+  - data_store_id: DS-KARATE-07
+    operations:
+    - D
+  - data_store_id: DS-KARATE-08
+    operations:
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - D
+  end_interface_id: IF-KARATE-11
+  preconditions:
+  - 依頼者が試作終了を判断
+  expected_results:
+  - 終了後30日以内に通常保存・バックアップ・試験コピー・識別情報・履歴を削除。個人情報を含まない完了確認を行う。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-08
+- interaction_id: INT-KARATE-05-09
+  name: 削除未完了
+  flow_type: exception
+  start_interface_id: IF-KARATE-12
+  event_id: EVT-KARATE-05-09
+  function_id: FN-KARATE-12
+  data_store_operations: []
+  end_interface_id: IF-KARATE-11
+  preconditions: []
+  expected_results:
+  - 削除できなかった対象を依頼者へ示し、削除完了とは報告しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-05-09
+unknowns:
+- unknown_id: U01
+  description: 取消後に同じ会員・日・道場のQRを再読取したとき、再登録を許すか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-03-01
+  - INT-KARATE-05-02
+  blocking: true
+  decision_owner: 依頼者
+  status: open

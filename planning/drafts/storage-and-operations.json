@@ -144,5 +144,7 @@
       "指定した少人数・架空の会員名で試す。試作終了後30日以内に試作データ一式を削除し本番移行しない。"
     ],
     "note": "提示した3点の試作運用方針への了承。環境設定・正式Baseline・配置の承認ではない。"
-  }
+  },
+  "superseded_for_current_review_by": "planning/review/ai/review-model.json",
+  "historical_source": true
 }

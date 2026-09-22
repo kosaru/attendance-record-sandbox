@@ -1,0 +1,225 @@
+schema_version: '2.0'
+baseline_candidate:
+  baseline_id: REQ-WS-KARATE-05-R001
+  workset_id: WS-KARATE-05
+  revision: R001
+  package_status: candidate
+  title: 試作データを準備・保全する
+  purpose: 試作データを準備・保全する
+  change_summary: 合意済み要件を統合しIFDAM・データ・対応表を追加した確認候補
+  lineage:
+    previous_baseline_id: null
+    change_reason: initial
+    supersedes_baseline_id: null
+    related_question_ids: []
+    related_development_request_ids:
+    - DR-KARATE-001
+scope:
+  included:
+    workset:
+      workset_id: WS-KARATE-05
+      purpose_artifact_ids:
+      - HA-KARATE-REVIEW-01
+      completion_condition_artifact_ids:
+      - HA-KARATE-REVIEW-01
+    ifdams:
+    - ifdam_id: IFDAM-KARATE-05
+      interaction_ids:
+      - INT-KARATE-05-01
+      - INT-KARATE-05-02
+      - INT-KARATE-05-03
+      - INT-KARATE-05-04
+      - INT-KARATE-05-05
+      - INT-KARATE-05-06
+      - INT-KARATE-05-07
+      - INT-KARATE-05-08
+      - INT-KARATE-05-09
+      interface_ids:
+      - IF-KARATE-09
+      - IF-KARATE-10
+      - IF-KARATE-11
+      - IF-KARATE-12
+      event_ids:
+      - EVT-KARATE-05-01
+      - EVT-KARATE-05-02
+      - EVT-KARATE-05-03
+      - EVT-KARATE-05-04
+      - EVT-KARATE-05-05
+      - EVT-KARATE-05-06
+      - EVT-KARATE-05-07
+      - EVT-KARATE-05-08
+      - EVT-KARATE-05-09
+      function_ids:
+      - FN-KARATE-08
+      - FN-KARATE-09
+      - FN-KARATE-10
+      - FN-KARATE-11
+      - FN-KARATE-12
+      data_store_ids:
+      - DS-KARATE-01
+      - DS-KARATE-02
+      - DS-KARATE-03
+      - DS-KARATE-04
+      - DS-KARATE-05
+      - DS-KARATE-06
+      - DS-KARATE-07
+      - DS-KARATE-08
+      - DS-KARATE-09
+  excluded:
+    interaction_ids: []
+    functions: []
+    data: []
+    ui: []
+    non_functional: []
+    other:
+    - 公開作業
+    - 本番運用
+    - 別アカウント間共有
+    - 紙・責任者管理との連携
+  boundaries:
+    upstream_dependencies: []
+    downstream_dependencies: []
+    external_system_dependencies: []
+    shared_elements:
+    - DS-KARATE-01
+    - DS-KARATE-02
+    - DS-KARATE-03
+    - DS-KARATE-04
+human_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: requirements-review
+  source_path: planning/review/index.html
+  review_snapshot_path: planning/review/要件とIFDAM.pdf
+  relevant_locations:
+  - 第6節
+  - 第9節 IFDAM-KARATE-05
+  - 第11節
+  - 第12節
+  required_for_handoff: true
+ai_structured_artifacts:
+- artifact_id: IFDAM-KARATE-05
+  artifact_type: ifdam
+  repository_path: planning/review/ai/ifdam-05.yaml
+  source_human_artifact_ids:
+  - HA-KARATE-REVIEW-01
+  schema_path: planning/review/schemas/ifdam.schema.yaml
+  required_for_handoff: true
+mapping:
+  mapping_manifest_paths:
+  - planning/review/ai/mapping.json
+  required_mapping_ids:
+  - MAP-KARATE-REVIEW-01
+  all_human_artifacts_mapped: true
+  all_ai_artifacts_mapped: true
+  bidirectional_traceability_verified: true
+supporting_artifacts:
+  conceptual_data_model_paths:
+  - planning/review/index.html
+  ui_paths:
+  - planning/review/index.html
+  function_definition_paths:
+  - planning/review/index.html
+  data_definition_paths:
+  - planning/review/index.html
+  erd_paths:
+  - planning/review/diagrams/erd.svg
+  crud_matrix_paths:
+  - planning/review/index.html
+  constraint_paths:
+  - planning/review/index.html
+  architecture_paths:
+  - planning/review/index.html
+  non_functional_requirement_paths:
+  - planning/review/index.html
+  decision_record_paths:
+  - planning/requests/DR-KARATE-001/decision-log.md
+  - planning/review/ai/review-model.json
+  schema_paths:
+  - planning/review/schemas/ifdam.schema.yaml
+requirements_state:
+  dependencies:
+  - dependency_id: DEP-ENV-01
+    description: 公開時のGoogle・Drive設定と既存環境での検証。DNSは保留。
+    affected_scope:
+    - WS-KARATE-05
+    status: controlled
+    evidence_path: planning/review/index.html#purpose
+  unresolved_items:
+  - item_id: U01
+    description: 取消後に同じ会員・日・道場のQRを再読取したとき、再登録を許すか。
+    affected_scope:
+    - INT-KARATE-03-01
+    - INT-KARATE-05-02
+    blocking: true
+    owner: 依頼者
+    follow_up_reference: planning/review/index.html#unknowns
+  blocking_unresolved_item_ids:
+  - U01
+  accepted_human_risk_decision_records:
+  - planning/requests/DR-KARATE-001/decision-log.md
+human_ai_synchronization:
+  human_artifacts_present: true
+  review_snapshots_present: true
+  ai_artifacts_present: true
+  semantic_consistency_verified: true
+  mapping_complete: true
+  ids_unique: true
+  references_resolvable: true
+  schemas_valid: true
+  checked_by: Codex requirement artifact review
+  checked_at: '2026-09-22'
+  evidence_paths:
+  - planning/review/validation.json
+candidate_readiness:
+  scope_complete: true
+  workset_purpose_confirmable: true
+  ui_function_data_defined: true
+  required_ifdams_defined: true
+  interactions_explicit: true
+  human_artifacts_reviewable: true
+  human_ai_synchronization_passed: true
+  dependencies_controlled: true
+  no_blocking_unresolved_items: false
+  candidate_review_package_complete: false
+  ready_for_human_decision: false
+human_decision_contract:
+  decision_required: true
+  allowed_decisions:
+  - approve
+  - approve-with-recorded-existing-risk
+  - request-changes
+  - withdraw
+  candidate_review_package_path: planning/review/index.html
+  decision_record_path: planning/requests/DR-KARATE-001/decision-log.md
+  requirement_pull_request: 0
+  reviewed_candidate_head_commit_external: ''
+formal_establishment_contract:
+  authority: external-baseline-establishment-record
+  establishment_record_path: ''
+  required_external_evidence:
+    human_decision_recorded: false
+    accepted_candidate_head_commit_fixed: false
+    requirement_pull_request_merged_to_release: false
+    release_target_branch_verified: false
+    requirement_commit_identified: false
+    human_ai_synchronization_evidence_fixed: false
+    no_blocking_unresolved_items_verified: false
+    package_scope_and_contents_fixed: false
+  requirement_commit_storage: external
+codex_handoff_contract:
+  handoff_state: not-eligible
+  eligibility_conditions:
+    formal_baseline_established: false
+    establishment_record_resolvable: false
+    requirement_commit_resolvable: false
+    required_artifacts_resolvable_at_requirement_commit: false
+    no_blocking_unresolved_items: false
+    target_workset_ifdams_interactions_explicit: false
+  issued_work_requests: []
+immutability:
+  established_package_is_immutable: true
+  changes_require_new_baseline_id: true
+  previous_baseline_remains_traceable: true
+notes:
+- レビュー用の候補草案。Release側要件PRとCandidate Headの固定前であり、正式承認を求める完成Packageではない。
+- 図表による業務表現の妥当性は依頼者が確認する。今回の内部検証は正式Gateやアプリ動作試験ではない。

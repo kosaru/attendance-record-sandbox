@@ -38,5 +38,7 @@
       "human_heading": "後続の工程で検討する事項"
     }
   ],
-  "formal_baseline": null
+  "formal_baseline": null,
+  "superseded_for_current_review_by": "planning/review/ai/review-model.json",
+  "historical_source": true
 }

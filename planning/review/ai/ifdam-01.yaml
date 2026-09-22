@@ -1,0 +1,134 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-01
+name: ログインして利用を始める
+workset_id: WS-KARATE-01
+artifact_status: review
+source_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: other
+  repository_path: planning/review/index.html
+  source_location: '#ws01'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: cfbb27ca82aca89c211e843d83bf5860be5823dc
+human_representation:
+  mermaid_source_path: planning/review/diagrams/ifdam-01.mmd
+  rendered_diagram_paths:
+  - planning/review/diagrams/INT-KARATE-01-01.svg
+  - planning/review/diagrams/INT-KARATE-01-02.svg
+  review_document_paths:
+  - planning/review/index.html#ws01
+  mapping_manifest_path: planning/review/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-01
+  name: ログイン
+  interface_type: screen
+  business_purpose: Googleで利用者を識別する
+  available_actions:
+  - Googleでログイン
+  displayed_information:
+  - 本人確認結果
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 本人・家族の記録対象を選ぶ
+  available_actions:
+  - 会員選択
+  - 追加
+  displayed_information:
+  - 会員名
+  - 年間回数
+events:
+- event_id: EVT-KARATE-01-01
+  name: 本人確認に成功
+  source_interface_id: UI-KARATE-01
+  business_trigger: 本人確認に成功
+  input_information: &id001
+  - Google本人確認結果
+- event_id: EVT-KARATE-01-02
+  name: 取消・認証失敗・対象外
+  source_interface_id: UI-KARATE-01
+  business_trigger: 取消・認証失敗・対象外
+  input_information: *id001
+functions:
+- function_id: FN-KARATE-01
+  name: ログインする
+  business_purpose: ログインする
+  inputs: *id001
+  outputs:
+  - 自分の会員一覧を表示
+  business_rules:
+  - 指定テスターのみ許可
+  - Googleパスワードを保存しない
+  - 同じGoogle本人識別情報を同じアカウントへ対応
+  normal_result:
+  - 自分の会員一覧を表示
+  exception_results:
+  - 取消・認証失敗・参加対象外は利用を開始しない
+  source_locations:
+  - planning/review/index.html#functions
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleで本人確認する利用者
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 1アカウントに属する本人・子ども
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の出席日で識別する記録
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定した試作参加者
+  conceptual_model_reference: planning/review/index.html#data
+interactions:
+- interaction_id: INT-KARATE-01-01
+  name: 本人確認に成功
+  flow_type: normal
+  start_interface_id: UI-KARATE-01
+  event_id: EVT-KARATE-01-01
+  function_id: FN-KARATE-01
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 指定テスターで本人確認に成功
+  expected_results:
+  - 参加許可を確認した本人の会員一覧と年間回数を表示。初回だけアカウント作成。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-01-01
+- interaction_id: INT-KARATE-01-02
+  name: 取消・認証失敗・対象外
+  flow_type: exception
+  start_interface_id: UI-KARATE-01
+  event_id: EVT-KARATE-01-02
+  function_id: FN-KARATE-01
+  data_store_operations:
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  end_interface_id: UI-KARATE-01
+  preconditions: []
+  expected_results:
+  - 利用を開始せず理由を表示。会員・出席を変更しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-01-02
+unknowns: []

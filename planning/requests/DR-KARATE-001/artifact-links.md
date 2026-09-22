@@ -1,3 +1,13 @@
+# 現在の確認用成果物
+
+- [要件とIFDAM（HTML）](../../review/index.html)
+- [固定版PDF](../../review/要件とIFDAM.pdf)
+- [構造化IFDAM](../../review/ai/)
+- [候補草案](../../review/candidates/)
+- [検証記録](../../review/validation.json)
+
+## 過去の成果物リンク
+
 # 人間向け資料の保存先
 
 - [企画書 たたき台](https://docs.google.com/document/d/1aF1DgGNbICm91RVcFGJmxwFJXk4o6nd_YSgn1BgfB1k)

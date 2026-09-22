@@ -63,5 +63,7 @@
         "QRコードを道場で読み取ったことの確認方法、紙とアプリの切り替え、既存の紙の記録を移す必要性。"
       ]
     }
-  ]
+  ],
+  "superseded_for_current_review_by": "planning/review/ai/review-model.json",
+  "historical_source": true
 }

@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-22",
+  "schema_valid": true,
+  "references_resolvable": true,
+  "interaction_ids_unique": true,
+  "requirements_mapped": true,
+  "ifdam_count": 5,
+  "interaction_count": 27,
+  "blocking_unknowns": [
+    "U01",
+    "U02"
+  ],
+  "visual_review": "27 PDF pages rendered and contact sheets reviewed; ERD and attendance flow inspected at page resolution; no clipping found",
+  "formal_baseline": null,
+  "candidate_ready": false,
+  "application_tests": "not performed; no implementation",
+  "rendered_diagrams": 30,
+  "broken_images": 0,
+  "semantic_review": "rules and exception outcomes compared against source decisions; U01/U02 left open"
+}

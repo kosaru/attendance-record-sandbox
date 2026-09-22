@@ -1,0 +1,370 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-03
+name: QRで出席を記録する
+workset_id: WS-KARATE-03
+artifact_status: review
+source_artifacts:
+- artifact_id: HA-KARATE-REVIEW-01
+  artifact_type: other
+  repository_path: planning/review/index.html
+  source_location: '#ws03'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: cfbb27ca82aca89c211e843d83bf5860be5823dc
+human_representation:
+  mermaid_source_path: planning/review/diagrams/ifdam-03.mmd
+  rendered_diagram_paths:
+  - planning/review/diagrams/INT-KARATE-03-01.svg
+  - planning/review/diagrams/INT-KARATE-03-02.svg
+  - planning/review/diagrams/INT-KARATE-03-03.svg
+  - planning/review/diagrams/INT-KARATE-03-04.svg
+  - planning/review/diagrams/INT-KARATE-03-05.svg
+  - planning/review/diagrams/INT-KARATE-03-06.svg
+  - planning/review/diagrams/INT-KARATE-03-07.svg
+  - planning/review/diagrams/INT-KARATE-03-08.svg
+  - planning/review/diagrams/INT-KARATE-03-09.svg
+  review_document_paths:
+  - planning/review/index.html#ws03
+  mapping_manifest_path: planning/review/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-05
+  name: QR読み取り
+  interface_type: screen
+  business_purpose: 選択した1人の出席を記録する
+  available_actions:
+  - カメラ許可
+  - 読取
+  - 戻る
+  displayed_information:
+  - 選択会員名
+  - 読み取り案内
+- interface_id: UI-KARATE-06
+  name: 記録結果
+  interface_type: screen
+  business_purpose: 確定した出席を確認する
+  available_actions:
+  - 出席帳へ
+  - 別の会員を選ぶ
+  displayed_information:
+  - 会員名
+  - 道場名
+  - 出席日
+  - 年間回数
+- interface_id: UI-KARATE-07
+  name: 結果不明・エラー案内
+  interface_type: screen
+  business_purpose: 成功と未確認を区別して次の行動を案内する
+  available_actions:
+  - 保存結果を確認
+  - 戻る
+  displayed_information:
+  - 結果不明
+  - 失敗理由
+events:
+- event_id: EVT-KARATE-03-01
+  name: 出席を保存
+  source_interface_id: UI-KARATE-05
+  business_trigger: 出席を保存
+  input_information: &id001
+  - 選択会員
+  - 道場QR
+  - 元の操作を識別する情報
+- event_id: EVT-KARATE-03-02
+  name: 同じ出席を再読取
+  source_interface_id: UI-KARATE-05
+  business_trigger: 同じ出席を再読取
+  input_information: *id001
+- event_id: EVT-KARATE-03-03
+  name: 不明QR・権限不足
+  source_interface_id: UI-KARATE-05
+  business_trigger: 不明QR・権限不足
+  input_information: *id001
+- event_id: EVT-KARATE-03-04
+  name: カメラ拒否・通信なし
+  source_interface_id: UI-KARATE-05
+  business_trigger: カメラ拒否・通信なし
+  input_information: *id001
+- event_id: EVT-KARATE-03-05
+  name: 保存結果が不明
+  source_interface_id: UI-KARATE-05
+  business_trigger: 保存結果が不明
+  input_information: *id001
+- event_id: EVT-KARATE-03-06
+  name: 元の保存を確認
+  source_interface_id: UI-KARATE-07
+  business_trigger: 元の保存を確認
+  input_information: &id002
+  - 元の操作
+- event_id: EVT-KARATE-03-07
+  name: 未保存を確認
+  source_interface_id: UI-KARATE-07
+  business_trigger: 未保存を確認
+  input_information: *id002
+- event_id: EVT-KARATE-03-08
+  name: 引き続き結果不明
+  source_interface_id: UI-KARATE-07
+  business_trigger: 引き続き結果不明
+  input_information: *id002
+- event_id: EVT-KARATE-03-09
+  name: 保存失敗が確定
+  source_interface_id: UI-KARATE-05
+  business_trigger: 保存失敗が確定
+  input_information: *id001
+functions:
+- function_id: FN-KARATE-04
+  name: 出席を記録する
+  business_purpose: 出席を記録する
+  inputs: *id001
+  outputs:
+  - 確定したスタンプを表示
+  business_rules:
+  - サーバー受付時の日本時間の日付
+  - 同一会員・同一道場・同日を重複計上しない
+  - 別道場は同日でも追加可
+  - 保存確定前に成功表示しない
+  - 現地確認なし・固定QR
+  - オンラインのみ、過去日の新規追加なし
+  normal_result:
+  - 確定したスタンプを表示
+  exception_results:
+  - 不明QR・権限なしは記録しない
+  - 保存失敗と結果不明を区別
+  source_locations:
+  - planning/review/index.html#functions
+- function_id: FN-KARATE-06
+  name: 保存結果を確認する
+  business_purpose: 保存結果を確認する
+  inputs: *id002
+  outputs:
+  - 元の出席結果を返す
+  business_rules:
+  - 受付済みなら元の出席日を維持
+  - 日付またぎで翌日の新規出席に自動置換しない
+  - 確認不能は結果不明を維持
+  normal_result:
+  - 元の出席結果を返す
+  exception_results:
+  - 不明なら接続回復後に再確認
+  source_locations:
+  - planning/review/index.html#functions
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 1アカウントに属する本人・子ども
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 固定QRと道場名の対応
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の出席日で識別する記録
+  conceptual_model_reference: planning/review/index.html#data
+- data_store_id: DS-KARATE-05
+  name: 処理結果確認情報
+  business_meaning: 通信途絶後に元の操作を照合する情報
+  conceptual_model_reference: planning/review/index.html#data
+interactions:
+- interaction_id: INT-KARATE-03-01
+  name: 出席を保存
+  flow_type: normal
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-01
+  function_id: FN-KARATE-04
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - C
+    - R
+    - U
+  end_interface_id: UI-KARATE-06
+  preconditions:
+  - 有効QR・所有会員・当日同一道場の有効記録なし
+  expected_results:
+  - 会員名・道場名・受付日のスタンプと年間回数を表示。別道場なら同日でも追加。
+  unknown_ids:
+  - U01
+  - U02
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-01
+- interaction_id: INT-KARATE-03-02
+  name: 同じ出席を再読取
+  flow_type: alternative
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-02
+  function_id: FN-KARATE-04
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - C
+    - R
+    - U
+  end_interface_id: UI-KARATE-06
+  preconditions:
+  - 同一会員・道場・日付が記録済み
+  expected_results:
+  - 記録済みのスタンプを表示。回数を増やさない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-02
+- interaction_id: INT-KARATE-03-03
+  name: 不明QR・権限不足
+  flow_type: exception
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-03
+  function_id: FN-KARATE-04
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  end_interface_id: UI-KARATE-07
+  preconditions: []
+  expected_results:
+  - 記録せず読み直しまたは会員選び直しを案内。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-03
+- interaction_id: INT-KARATE-03-04
+  name: カメラ拒否・通信なし
+  flow_type: exception
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-04
+  function_id: FN-KARATE-04
+  data_store_operations: []
+  end_interface_id: UI-KARATE-07
+  preconditions: []
+  expected_results:
+  - 記録せずカメラ許可・接続を案内。利用できなければ既存の紙運用。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-04
+- interaction_id: INT-KARATE-03-05
+  name: 保存結果が不明
+  flow_type: exception
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-05
+  function_id: FN-KARATE-04
+  data_store_operations: []
+  end_interface_id: UI-KARATE-07
+  preconditions: []
+  expected_results:
+  - 応答がないため成功を表示しない。サーバー側の保存有無は未確定。元の操作の結果確認へ進む。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-05
+- interaction_id: INT-KARATE-03-06
+  name: 元の保存を確認
+  flow_type: normal
+  start_interface_id: UI-KARATE-07
+  event_id: EVT-KARATE-03-06
+  function_id: FN-KARATE-06
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  end_interface_id: UI-KARATE-06
+  preconditions:
+  - 保存済みと確認できた
+  expected_results:
+  - 保存済みの出席を返す。日付をまたいでも元の受付日と同じ記録。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-06
+- interaction_id: INT-KARATE-03-07
+  name: 未保存を確認
+  flow_type: alternative
+  start_interface_id: UI-KARATE-07
+  event_id: EVT-KARATE-03-07
+  function_id: FN-KARATE-06
+  data_store_operations:
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  end_interface_id: UI-KARATE-05
+  preconditions:
+  - 保存されていないと確定できた
+  expected_results:
+  - 未保存と確認できたことを案内し利用者が読み直す。過去の記録を自動追加しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-07
+- interaction_id: INT-KARATE-03-08
+  name: 引き続き結果不明
+  flow_type: exception
+  start_interface_id: UI-KARATE-07
+  event_id: EVT-KARATE-03-08
+  function_id: FN-KARATE-06
+  data_store_operations:
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  end_interface_id: UI-KARATE-07
+  preconditions: []
+  expected_results:
+  - 結果不明のまま再確認を案内。翌日の新規出席へ自動変換しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-08
+- interaction_id: INT-KARATE-03-09
+  name: 保存失敗が確定
+  flow_type: exception
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-03-09
+  function_id: FN-KARATE-04
+  data_store_operations: []
+  end_interface_id: UI-KARATE-07
+  preconditions:
+  - 記録が保存されていないと確定
+  expected_results:
+  - 保存できなかったことを表示し読み直しを案内。成功スタンプを追加しない。
+  unknown_ids: []
+  source_locations:
+  - planning/review/index.html#INT-KARATE-03-09
+unknowns:
+- unknown_id: U01
+  description: 取消後に同じ会員・日・道場のQRを再読取したとき、再登録を許すか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-03-01
+  - INT-KARATE-05-02
+  blocking: true
+  decision_owner: 依頼者
+  status: open
+- unknown_id: U02
+  description: 道場名変更時、過去スタンプを当時の名称で残すか最新名称へ変えるか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-03-01
+  - INT-KARATE-04-01
+  blocking: true
+  decision_owner: 依頼者
+  status: open
