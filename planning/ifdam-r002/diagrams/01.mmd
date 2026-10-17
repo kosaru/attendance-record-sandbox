@@ -1,0 +1,29 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U01["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>ログイン</b><br/><small>UI-KARATE-01</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>試作の案内<br/>認証・許可のエラー</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>Googleでログイン</td></tr></table>"]:::ui
+  U02["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>会員一覧</b><br/><small>UI-KARATE-02</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>@{会員名}<br/>対象なし／取得エラー</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>追加<br/>会員を選ぶ<br/>再読込</td></tr></table>"]:::ui
+  F01(["本人と参加許可を確認する<br/>FN-KARATE-01"]):::function
+  F14(["会員一覧を取得する<br/>FN-KARATE-14"]):::function
+  D01[("アカウント<br/>DS-KARATE-01")]:::data
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  D08[("試作参加許可<br/>DS-KARATE-08")]:::data
+  E1@{ shape: bang, label: "Googleでログインを押す<br/>E1" }
+  class E1 event
+  U01 --> E1
+  E1 --> F01
+  F01 -->|"認証・許可あり [1.1]"| U02
+  F01 -->|"取消／認証失敗／対象外 [1.2]"| U01
+  E2@{ shape: bang, label: "認証後の表示／再読込<br/>E2" }
+  class E2 event
+  U02 --> E2
+  E2 --> F14
+  F14 -->|"取得成功 [2.1]"| U02
+  F14 -->|"取得失敗 [2.2]"| U02
+  D01 -.->|R| F01
+  F01 -.->|"C"| D01
+  D08 -.->|R| F01
+  D02 -.->|R| F14
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

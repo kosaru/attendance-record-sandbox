@@ -1,0 +1,36 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U04["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>出席帳</b><br/><small>UI-KARATE-04</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>会員名・対象年・年間回数<br/>@{道場名・出席日}<br/>読込中／0件</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>対象年</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>QRを読む<br/>年を選ぶ<br/>会員変更<br/>訂正案内</td></tr></table>"]:::ui
+  U05["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>QR読み取り</b><br/><small>UI-KARATE-05</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>選択会員名<br/>カメラの読み取り案内</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>道場QR</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>戻る</td></tr></table>"]:::ui
+  U13["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>読み取り前のエラー</b><br/><small>UI-KARATE-13</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>カメラ拒否／開始前オフライン<br/>まだ登録していない</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>読取を再開<br/>出席帳へ</td></tr></table>"]:::ui
+  U15["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>出席帳の取得エラー</b><br/><small>UI-KARATE-15</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>会員名・対象年<br/>回数は取得できていない</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>再読込<br/>会員変更</td></tr></table>"]:::ui
+  F05(["出席帳を取得する<br/>FN-KARATE-05"]):::function
+  F13(["QR読み取りを開始する<br/>FN-KARATE-13"]):::function
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  D03[("道場<br/>DS-KARATE-03")]:::data
+  D04[("出席<br/>DS-KARATE-04")]:::data
+  E1@{ shape: bang, label: "QRを読むを押す<br/>E1" }
+  class E1 event
+  U04 --> E1
+  E1 --> F13
+  F13 -->|"開始可能 [1.1]"| U05
+  F13 -->|"カメラ拒否／開始前オフライン [1.2]"| U13
+  E2@{ shape: bang, label: "読取を再開を押す<br/>E2" }
+  class E2 event
+  U13 --> E2
+  E2 --> F13
+  F13 -->|"開始可能 [2.1]"| U05
+  F13 -->|"まだ開始できない [2.2]"| U13
+  E3@{ shape: bang, label: "戻るを押す<br/>E3" }
+  class E3 event
+  U05 --> E3
+  E3 --> F05
+  F05 -->|"取得成功 [3.1]"| U04
+  F05 -->|"取得失敗 [3.2]"| U15
+  D02 -.->|R| F05
+  D03 -.->|R| F05
+  D04 -.->|R| F05
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

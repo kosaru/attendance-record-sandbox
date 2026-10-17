@@ -1,0 +1,233 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-08
+name: 指定コピーから復旧する
+workset_id: WS-KARATE-08
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-08'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/08.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/08.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-08
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-25
+  name: 復旧の指示
+  interface_type: other
+  business_purpose: 復旧の指示
+  displayed_information:
+  - 指定コピー・復旧結果
+  input_information:
+  - 復元する正常コピー
+  - 依頼者の復旧判断
+  available_actions:
+  - 復旧を実行
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-25
+events:
+- event_id: EVT-KARATE-R002-08-1
+  name: 復旧を実行する
+  source_interface_id: IF-KARATE-25
+  business_trigger: 復旧を実行する
+  input_information: &id001
+  - 依頼者の復旧判断
+  - 指定した正常コピー
+  source_locations:
+  - planning/ifdam-r002/index.html#event-08-1
+functions:
+- function_id: FN-KARATE-11
+  name: 正常コピーから復旧する
+  business_purpose: 正常コピーから復旧する
+  inputs: *id001
+  outputs:
+  - 復旧対象の会員・出席・本人対応
+  - 検証結果と成否
+  normal_result:
+  - 復旧対象の会員・出席・本人対応|検証結果と成否
+  business_rules:
+  - コピーの整合性・本人対応・出席件数を確認
+  - 復旧に失敗したら成功として再開しない
+  - 復旧時点以降のデータ損失範囲は既存合意の範囲
+  - 具体的な復旧手順は設計と復元試験で検証
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-11
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleの本人識別情報とアプリ利用者の対応。Googleパスワードは保持しない。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-01
+  source_locations:
+  - planning/ifdam-r002/index.html#data-01
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の日付・有効／取消状態。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-04
+  source_locations:
+  - planning/ifdam-r002/index.html#data-04
+- data_store_id: DS-KARATE-05
+  name: 操作の確認情報
+  business_meaning: 元の出席操作とその受付日・保存結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-05
+  source_locations:
+  - planning/ifdam-r002/index.html#data-05
+- data_store_id: DS-KARATE-06
+  name: 訂正履歴
+  business_meaning: 対象種別・対象識別情報・変更前後・理由・担当・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-06
+  source_locations:
+  - planning/ifdam-r002/index.html#data-06
+- data_store_id: DS-KARATE-07
+  name: バックアップ
+  business_meaning: 通常保存の整合したコピーと作成時刻・検証結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-07
+  source_locations:
+  - planning/ifdam-r002/index.html#data-07
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定したGoogle利用者の許可情報。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-08
+  source_locations:
+  - planning/ifdam-r002/index.html#data-08
+- data_store_id: DS-KARATE-09
+  name: 運用記録
+  business_meaning: 保全・復旧・削除の成否と対象・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-09
+  source_locations:
+  - planning/ifdam-r002/index.html#data-09
+interactions:
+- interaction_id: INT-KARATE-R002-08-1-1
+  name: 復元・検証成功
+  flow_type: normal
+  start_interface_id: IF-KARATE-25
+  event_id: EVT-KARATE-R002-08-1
+  function_id: FN-KARATE-11
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-04
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-05
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-25
+  preconditions:
+  - 図中の分岐条件：復元・検証成功
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 本人対応と会員・出席・集計の検証結果を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-08-1-1
+- interaction_id: INT-KARATE-R002-08-1-2
+  name: 復元／検証失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-25
+  event_id: EVT-KARATE-R002-08-1
+  function_id: FN-KARATE-11
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-04
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-05
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - U
+    - D
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-25
+  preconditions:
+  - 図中の分岐条件：復元／検証失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 復旧完了としない。再開判断のため実状態と原因を示す
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-08-1-2
+unknowns: []

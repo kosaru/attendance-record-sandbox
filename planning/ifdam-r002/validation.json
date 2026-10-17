@@ -1,0 +1,181 @@
+{
+  "revision": "R002",
+  "schema_passed": true,
+  "ifdam_count": 17,
+  "workset_count": 9,
+  "interaction_count": 54,
+  "formal_baseline_established": false,
+  "human_semantic_approval": false,
+  "render_check": "19 SVG generated; linked images loaded; PDF generated",
+  "limitations": [
+    "業務判断U01/U02は未決定",
+    "システム設計・アプリ実機試験は未実施",
+    "Candidate完成と正式承認は未成立"
+  ],
+  "checked_at": "2026-10-17",
+  "id_references_passed": true,
+  "human_anchors_passed": true,
+  "diagram_mapping_passed": true,
+  "directed_crud_passed": true,
+  "function_shapes_passed": true,
+  "checks": [
+    {
+      "ifdam": "IFDAM-KARATE-R002-01",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-02A",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-02B",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-03A",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-03B",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-03C",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-03D",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-04A",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-04B",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-05",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-06",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-07",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-08",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-09",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-NAV1",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-NAV2",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    },
+    {
+      "ifdam": "IFDAM-KARATE-R002-NAV3",
+      "schema": true,
+      "ids": true,
+      "anchors": true,
+      "diagram_nodes": true,
+      "directed_crud": true,
+      "function_ellipse": true
+    }
+  ],
+  "semantic_review": "記法・分岐・入出力・データ参照を原資料と照合。UI詳細は確認案。人間の意味承認や全要件の完全性を保証しない。",
+  "visual_review": "全54ページを画像化して6枚の一覧で確認。13・19・46・53ページはページ画像で図・入出力・CRUDを拡大確認。文字切れ・ページはみ出しなし。拡大可能なSVGを併置。",
+  "original_book_images_reviewed": [
+    "印刷103・104・129・136（私有参照。公開成果物へ転載なし）"
+  ]
+}

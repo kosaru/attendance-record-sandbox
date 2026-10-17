@@ -1,0 +1,30 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U02["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>会員一覧</b><br/><small>UI-KARATE-02</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>@{会員名}<br/>対象なし／取得エラー</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>追加<br/>会員を選ぶ<br/>再読込</td></tr></table>"]:::ui
+  U03["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>会員登録</b><br/><small>UI-KARATE-03</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>入力・保存エラー</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>会員名</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>登録<br/>戻る</td></tr></table>"]:::ui
+  F02(["会員を登録する<br/>FN-KARATE-02"]):::function
+  F14(["会員一覧を取得する<br/>FN-KARATE-14"]):::function
+  F15(["登録画面を開く<br/>FN-KARATE-15"]):::function
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  E1@{ shape: bang, label: "追加を押す<br/>E1" }
+  class E1 event
+  U02 --> E1
+  E1 --> F15
+  F15 -->|"入力欄を表示 [1.1]"| U03
+  E2@{ shape: bang, label: "登録を押す<br/>E2" }
+  class E2 event
+  U03 --> E2
+  E2 --> F02
+  F02 -->|"保存済み [2.1]"| U02
+  F02 -->|"入力不正／保存失敗／結果不明 [2.2]"| U03
+  E3@{ shape: bang, label: "戻るを押す<br/>E3" }
+  class E3 event
+  U03 --> E3
+  E3 --> F14
+  F14 -->|"戻って一覧取得 [3.1]"| U02
+  F02 -.->|"C"| D02
+  D02 -.->|R| F14
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

@@ -1,0 +1,171 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-06
+name: 確認済みの誤記録を訂正する
+workset_id: WS-KARATE-06
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-06'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/06.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/06.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-06
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-22
+  name: 訂正・取消の指示
+  interface_type: other
+  business_purpose: 訂正・取消の指示
+  displayed_information:
+  - 対象の現在値・実行結果
+  input_information:
+  - 会員または出席の識別情報
+  - 訂正値または取消
+  - 理由・担当
+  available_actions:
+  - 訂正・取消を実行
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-22
+events:
+- event_id: EVT-KARATE-R002-06-1
+  name: 訂正・取消を実行する
+  source_interface_id: IF-KARATE-22
+  business_trigger: 訂正・取消を実行する
+  input_information: &id001
+  - 依頼者が確認した対象
+  - 訂正値または取消
+  - 理由・担当・操作日時
+  source_locations:
+  - planning/ifdam-r002/index.html#event-06-1
+functions:
+- function_id: FN-KARATE-09
+  name: 記録を訂正・取消する
+  business_purpose: 記録を訂正・取消する
+  inputs: *id001
+  outputs:
+  - 変更後の内容
+  - 訂正履歴
+  - 実行結果
+  normal_result:
+  - 変更後の内容|訂正履歴|実行結果
+  business_rules:
+  - 会員名または既存出席を対象とする
+  - 未登録の過去出席は追加しない
+  - 訂正で重複が発生する場合は中止
+  - 変更前後・理由・担当・日時を残す
+  - 取消は物理削除ではなく集計対象外
+  - 取消後の再登録はU01
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-09
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の日付・有効／取消状態。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-04
+  source_locations:
+  - planning/ifdam-r002/index.html#data-04
+- data_store_id: DS-KARATE-06
+  name: 訂正履歴
+  business_meaning: 対象種別・対象識別情報・変更前後・理由・担当・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-06
+  source_locations:
+  - planning/ifdam-r002/index.html#data-06
+interactions:
+- interaction_id: INT-KARATE-R002-06-1-1
+  name: 変更と履歴の保存を確認
+  flow_type: normal
+  start_interface_id: IF-KARATE-22
+  event_id: EVT-KARATE-R002-06-1
+  function_id: FN-KARATE-09
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+    - R
+  end_interface_id: IF-KARATE-22
+  preconditions:
+  - 図中の分岐条件：変更と履歴の保存を確認
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 変更後・理由・担当・日時を表示
+  unknown_ids:
+  - U01
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-06-1-1
+- interaction_id: INT-KARATE-R002-06-1-2
+  name: 対象なし／重複／権限／保存失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-22
+  event_id: EVT-KARATE-R002-06-1
+  function_id: FN-KARATE-09
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+    - U
+  - data_store_id: DS-KARATE-06
+    operations:
+    - C
+    - R
+  end_interface_id: IF-KARATE-22
+  preconditions:
+  - 図中の分岐条件：対象なし／重複／権限／保存失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 完了表示せず原因と実状態を確認する
+  unknown_ids:
+  - U01
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-06-1-2
+unknowns:
+- unknown_id: U01
+  description: 取消後に同じ会員・日・道場のQRを再読取したとき、再登録を許すか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-R002-03B-1-1
+  - INT-KARATE-R002-03B-1-2
+  - INT-KARATE-R002-03B-1-3
+  - INT-KARATE-R002-03B-1-4
+  - INT-KARATE-R002-06-1-1
+  - INT-KARATE-R002-06-1-2
+  blocking: true
+  decision_owner: 依頼者
+  status: open

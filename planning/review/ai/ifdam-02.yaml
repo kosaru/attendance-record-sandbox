@@ -2,7 +2,7 @@ schema_version: '2.0'
 ifdam_id: IFDAM-KARATE-02
 name: 本人・家族を登録して選ぶ
 workset_id: WS-KARATE-02
-artifact_status: review
+artifact_status: obsolete
 source_artifacts:
 - artifact_id: HA-KARATE-REVIEW-01
   artifact_type: other

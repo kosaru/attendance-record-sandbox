@@ -2,7 +2,7 @@ schema_version: '2.0'
 ifdam_id: IFDAM-KARATE-05
 name: 試作データを準備・保全する
 workset_id: WS-KARATE-05
-artifact_status: review
+artifact_status: obsolete
 source_artifacts:
 - artifact_id: HA-KARATE-REVIEW-01
   artifact_type: other

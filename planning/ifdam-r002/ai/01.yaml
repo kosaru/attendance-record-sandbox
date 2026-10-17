@@ -1,0 +1,202 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-01
+name: 本人確認から会員一覧へ
+workset_id: WS-KARATE-01
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-01'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/01.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/01.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-01
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-01
+  name: ログイン
+  interface_type: screen
+  business_purpose: ログイン
+  displayed_information:
+  - 試作の案内
+  - 認証・許可のエラー
+  input_information: []
+  available_actions:
+  - Googleでログイン
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-01
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 会員一覧
+  displayed_information:
+  - '@{会員名}'
+  - 対象なし／取得エラー
+  input_information: []
+  available_actions:
+  - 追加
+  - 会員を選ぶ
+  - 再読込
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-02
+events:
+- event_id: EVT-KARATE-R002-01-1
+  name: Googleでログインを押す
+  source_interface_id: UI-KARATE-01
+  business_trigger: Googleでログインを押す
+  input_information: &id001
+  - Googleログインの操作
+  - Googleの本人確認結果
+  source_locations:
+  - planning/ifdam-r002/index.html#event-01-1
+- event_id: EVT-KARATE-R002-01-2
+  name: 認証後の表示／再読込
+  source_interface_id: UI-KARATE-02
+  business_trigger: 認証後の表示／再読込
+  input_information: &id002
+  - ログイン中の利用者
+  source_locations:
+  - planning/ifdam-r002/index.html#event-01-2
+functions:
+- function_id: FN-KARATE-01
+  name: 本人と参加許可を確認する
+  business_purpose: 本人と参加許可を確認する
+  inputs: *id001
+  outputs:
+  - アプリ利用者
+  - 認証・許可エラー
+  normal_result:
+  - アプリ利用者|認証・許可エラー
+  business_rules:
+  - 指定参加者のみ利用可能
+  - 同じGoogle本人識別情報を同じアカウントに対応
+  - 会員の取得失敗は認証失敗と分ける
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-01
+- function_id: FN-KARATE-14
+  name: 会員一覧を取得する
+  business_purpose: 会員一覧を取得する
+  inputs: *id002
+  outputs:
+  - '@{所有会員の識別情報・会員名}'
+  - 対象なし／取得エラー
+  normal_result:
+  - '@{所有会員の識別情報・会員名}|対象なし／取得エラー'
+  business_rules:
+  - 他人の会員を含めない
+  - 新規利用で0人と取得失敗を区別
+  - 回数は出席帳で表示する（一覧の回数欄はR001の未確認追加を除去）
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-14
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleの本人識別情報とアプリ利用者の対応。Googleパスワードは保持しない。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-01
+  source_locations:
+  - planning/ifdam-r002/index.html#data-01
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定したGoogle利用者の許可情報。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-08
+  source_locations:
+  - planning/ifdam-r002/index.html#data-08
+interactions:
+- interaction_id: INT-KARATE-R002-01-1-1
+  name: 認証・許可あり
+  flow_type: normal
+  start_interface_id: UI-KARATE-01
+  event_id: EVT-KARATE-R002-01-1
+  function_id: FN-KARATE-01
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：認証・許可あり
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 利用者を確定後、会員一覧の表示時イベントへ進む
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-01-1-1
+- interaction_id: INT-KARATE-R002-01-1-2
+  name: 取消／認証失敗／対象外
+  flow_type: exception
+  start_interface_id: UI-KARATE-01
+  event_id: EVT-KARATE-R002-01-1
+  function_id: FN-KARATE-01
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  end_interface_id: UI-KARATE-01
+  preconditions:
+  - 図中の分岐条件：取消／認証失敗／対象外
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 利用開始せずログイン画面に理由を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-01-1-2
+- interaction_id: INT-KARATE-R002-01-2-1
+  name: 取得成功
+  flow_type: normal
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-R002-01-2
+  function_id: FN-KARATE-14
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：取得成功
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 所有会員名の一覧。未登録なら0人
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-01-2-1
+- interaction_id: INT-KARATE-R002-01-2-2
+  name: 取得失敗
+  flow_type: exception
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-R002-01-2
+  function_id: FN-KARATE-14
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：取得失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 一覧を空と断定せずエラー表示。再読込できる
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-01-2-2
+unknowns: []

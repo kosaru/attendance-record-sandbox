@@ -1,0 +1,224 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-09
+name: 試作終了後のデータを削除する
+workset_id: WS-KARATE-09
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-09'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/09.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/09.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-09
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-26
+  name: 試作終了の指示
+  interface_type: other
+  business_purpose: 試作終了の指示
+  displayed_information:
+  - 終了日・削除結果・残存対象
+  input_information:
+  - 依頼者が決めた終了日
+  - 削除対象の所在
+  available_actions:
+  - 削除を実行
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-26
+events:
+- event_id: EVT-KARATE-R002-09-1
+  name: 削除を実行する
+  source_interface_id: IF-KARATE-26
+  business_trigger: 削除を実行する
+  input_information: &id001
+  - 依頼者が決めた終了日
+  - 通常保存・Drive・試験コピーの所在
+  source_locations:
+  - planning/ifdam-r002/index.html#event-09-1
+functions:
+- function_id: FN-KARATE-12
+  name: 試作データを削除する
+  business_purpose: 試作データを削除する
+  inputs: *id001
+  outputs:
+  - 場所ごとの削除成否
+  - 残存対象
+  normal_result:
+  - 場所ごとの削除成否|残存対象
+  business_rules:
+  - 終了後30日以内
+  - 会員・出席・履歴・識別情報・バックアップを含む
+  - 本番移行しない
+  - 全対象が完了するまで削除完了としない
+  - 削除後の結果に個人情報を残さない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-12
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleの本人識別情報とアプリ利用者の対応。Googleパスワードは保持しない。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-01
+  source_locations:
+  - planning/ifdam-r002/index.html#data-01
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の日付・有効／取消状態。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-04
+  source_locations:
+  - planning/ifdam-r002/index.html#data-04
+- data_store_id: DS-KARATE-05
+  name: 操作の確認情報
+  business_meaning: 元の出席操作とその受付日・保存結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-05
+  source_locations:
+  - planning/ifdam-r002/index.html#data-05
+- data_store_id: DS-KARATE-06
+  name: 訂正履歴
+  business_meaning: 対象種別・対象識別情報・変更前後・理由・担当・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-06
+  source_locations:
+  - planning/ifdam-r002/index.html#data-06
+- data_store_id: DS-KARATE-07
+  name: バックアップ
+  business_meaning: 通常保存の整合したコピーと作成時刻・検証結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-07
+  source_locations:
+  - planning/ifdam-r002/index.html#data-07
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定したGoogle利用者の許可情報。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-08
+  source_locations:
+  - planning/ifdam-r002/index.html#data-08
+- data_store_id: DS-KARATE-09
+  name: 運用記録
+  business_meaning: 保全・復旧・削除の成否と対象・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-09
+  source_locations:
+  - planning/ifdam-r002/index.html#data-09
+interactions:
+- interaction_id: INT-KARATE-R002-09-1-1
+  name: 全対象削除を確認
+  flow_type: normal
+  start_interface_id: IF-KARATE-26
+  event_id: EVT-KARATE-R002-09-1
+  function_id: FN-KARATE-12
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-06
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - R
+    - D
+  end_interface_id: IF-KARATE-26
+  preconditions:
+  - 図中の分岐条件：全対象削除を確認
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 場所ごとの成否のみを表示し個人情報を残さない
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-09-1-1
+- interaction_id: INT-KARATE-R002-09-1-2
+  name: 残存／削除失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-26
+  event_id: EVT-KARATE-R002-09-1
+  function_id: FN-KARATE-12
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-06
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-07
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - R
+    - D
+  end_interface_id: IF-KARATE-26
+  preconditions:
+  - 図中の分岐条件：残存／削除失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 未完了場所と理由を示し再確認する
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-09-1-2
+unknowns: []

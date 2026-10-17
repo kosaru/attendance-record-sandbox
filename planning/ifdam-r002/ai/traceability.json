@@ -1,0 +1,201 @@
+{
+  "status": "draft",
+  "requirements": [
+    {
+      "requirement_id": "R01",
+      "worksets": [
+        "WS-KARATE-01"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-01"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R02",
+      "worksets": [
+        "WS-KARATE-01"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-01"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R03",
+      "worksets": [
+        "WS-KARATE-02"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-02A",
+        "IFDAM-KARATE-R002-02B"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R04",
+      "worksets": [
+        "WS-KARATE-03"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-03A",
+        "IFDAM-KARATE-R002-03B",
+        "IFDAM-KARATE-R002-03C",
+        "IFDAM-KARATE-R002-03D"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R05",
+      "worksets": [
+        "WS-KARATE-03"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-03A",
+        "IFDAM-KARATE-R002-03B",
+        "IFDAM-KARATE-R002-03C",
+        "IFDAM-KARATE-R002-03D"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R06",
+      "worksets": [
+        "WS-KARATE-03",
+        "WS-KARATE-04"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-03A",
+        "IFDAM-KARATE-R002-03B",
+        "IFDAM-KARATE-R002-03C",
+        "IFDAM-KARATE-R002-03D",
+        "IFDAM-KARATE-R002-04A",
+        "IFDAM-KARATE-R002-04B",
+        "IFDAM-KARATE-R002-NAV1",
+        "IFDAM-KARATE-R002-NAV2",
+        "IFDAM-KARATE-R002-NAV3"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R07",
+      "worksets": [
+        "WS-KARATE-01",
+        "WS-KARATE-04"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-01",
+        "IFDAM-KARATE-R002-04A",
+        "IFDAM-KARATE-R002-04B",
+        "IFDAM-KARATE-R002-NAV1",
+        "IFDAM-KARATE-R002-NAV2",
+        "IFDAM-KARATE-R002-NAV3"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R08",
+      "worksets": [],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [],
+      "constraint_location": "planning/ifdam-r002/index.html#scope"
+    },
+    {
+      "requirement_id": "R09",
+      "worksets": [],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [],
+      "constraint_location": "planning/ifdam-r002/index.html#scope"
+    },
+    {
+      "requirement_id": "R10",
+      "worksets": [
+        "WS-KARATE-07",
+        "WS-KARATE-08",
+        "WS-KARATE-09"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-07",
+        "IFDAM-KARATE-R002-08",
+        "IFDAM-KARATE-R002-09"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R11",
+      "worksets": [
+        "WS-KARATE-04",
+        "WS-KARATE-06"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-04A",
+        "IFDAM-KARATE-R002-04B",
+        "IFDAM-KARATE-R002-06",
+        "IFDAM-KARATE-R002-NAV1",
+        "IFDAM-KARATE-R002-NAV2",
+        "IFDAM-KARATE-R002-NAV3"
+      ],
+      "constraint_location": null
+    },
+    {
+      "requirement_id": "R12",
+      "worksets": [
+        "WS-KARATE-01",
+        "WS-KARATE-05"
+      ],
+      "human_location": "planning/ifdam-r002/index.html#requirements",
+      "ifdams": [
+        "IFDAM-KARATE-R002-01",
+        "IFDAM-KARATE-R002-05"
+      ],
+      "constraint_location": null
+    }
+  ],
+  "tests_status": "planned-not-executed",
+  "checks": [
+    [
+      "本人と所有権",
+      "許可参加者だけ利用可能。他アカウントの会員を表示・更新できない。別端末でも同一Google本人の会員に到達する。",
+      "01,02B"
+    ],
+    [
+      "重複と別道場",
+      "連打・同時操作・再送でも同一会員／同日／同一道場は1件。別道場なら1件追加。",
+      "03B"
+    ],
+    [
+      "日付と応答不明",
+      "23:59受付を00:00以降に再確認しても元の日付。00:00受付なら翌日。保存応答途絶を成功とも失敗とも断定しない。",
+      "03B,03C"
+    ],
+    [
+      "取得と集計",
+      "1〜12月・同日複数道場・取消除外。0件と取得失敗を区別する。",
+      "04A"
+    ],
+    [
+      "訂正",
+      "会員名／出席を対象とし、変更前後・理由・担当・日時を残す。衝突する訂正は止める。",
+      "06"
+    ],
+    [
+      "保全・復旧",
+      "整合したコピー、転送一致、保持世代、失敗時の正常コピー保護。復元した本人対応・会員・出席・集計を照合。",
+      "07,08"
+    ],
+    [
+      "終了",
+      "終了後30日以内に通常保存・Drive・試験コピー・履歴・識別情報の残存がないことを確認。",
+      "09"
+    ]
+  ]
+}

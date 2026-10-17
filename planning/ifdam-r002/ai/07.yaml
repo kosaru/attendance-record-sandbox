@@ -1,0 +1,223 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-07
+name: 日次コピーを保存する
+workset_id: WS-KARATE-07
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-07'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/07.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/07.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-07
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-23
+  name: 日次バックアップ開始
+  interface_type: batch
+  business_purpose: 日次バックアップ開始
+  displayed_information:
+  - 保存対象と非公開保存先
+  input_information: []
+  available_actions:
+  - 日次時刻になる
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-23
+- interface_id: IF-KARATE-24
+  name: バックアップ結果
+  interface_type: other
+  business_purpose: バックアップ結果
+  displayed_information:
+  - 成否・時刻・コピー識別情報
+  - 失敗理由・正常コピーの時点
+  input_information: []
+  available_actions:
+  - 結果を確認
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-24
+events:
+- event_id: EVT-KARATE-R002-07-1
+  name: 日次時刻になる
+  source_interface_id: IF-KARATE-23
+  business_trigger: 日次時刻になる
+  input_information: &id001
+  - 日次起動
+  - 通常保存のデータ
+  - 非公開Drive保存先
+  source_locations:
+  - planning/ifdam-r002/index.html#event-07-1
+functions:
+- function_id: FN-KARATE-10
+  name: バックアップを保存する
+  business_purpose: バックアップを保存する
+  inputs: *id001
+  outputs:
+  - 検証済みコピー・作成時刻
+  - 成否と理由
+  normal_result:
+  - 検証済みコピー・作成時刻|成否と理由
+  business_rules:
+  - 毎日1回・直近7日分
+  - 整合したコピーと転送一致を検証
+  - 失敗時は正常コピーを消さない
+  - 最後の正常コピー以降の変更は失われ得る
+  - Googleログインの一時情報を含めない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-10
+data_stores:
+- data_store_id: DS-KARATE-01
+  name: アカウント
+  business_meaning: Googleの本人識別情報とアプリ利用者の対応。Googleパスワードは保持しない。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-01
+  source_locations:
+  - planning/ifdam-r002/index.html#data-01
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の日付・有効／取消状態。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-04
+  source_locations:
+  - planning/ifdam-r002/index.html#data-04
+- data_store_id: DS-KARATE-05
+  name: 操作の確認情報
+  business_meaning: 元の出席操作とその受付日・保存結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-05
+  source_locations:
+  - planning/ifdam-r002/index.html#data-05
+- data_store_id: DS-KARATE-06
+  name: 訂正履歴
+  business_meaning: 対象種別・対象識別情報・変更前後・理由・担当・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-06
+  source_locations:
+  - planning/ifdam-r002/index.html#data-06
+- data_store_id: DS-KARATE-07
+  name: バックアップ
+  business_meaning: 通常保存の整合したコピーと作成時刻・検証結果。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-07
+  source_locations:
+  - planning/ifdam-r002/index.html#data-07
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定したGoogle利用者の許可情報。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-08
+  source_locations:
+  - planning/ifdam-r002/index.html#data-08
+- data_store_id: DS-KARATE-09
+  name: 運用記録
+  business_meaning: 保全・復旧・削除の成否と対象・日時。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-09
+  source_locations:
+  - planning/ifdam-r002/index.html#data-09
+interactions:
+- interaction_id: INT-KARATE-R002-07-1-1
+  name: 保存・検証成功
+  flow_type: normal
+  start_interface_id: IF-KARATE-23
+  event_id: EVT-KARATE-R002-07-1
+  function_id: FN-KARATE-10
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  - data_store_id: DS-KARATE-06
+    operations:
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  - data_store_id: DS-KARATE-07
+    operations:
+    - C
+    - R
+    - U
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-24
+  preconditions:
+  - 図中の分岐条件：保存・検証成功
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - コピー識別情報・作成時刻・保存先・正常結果
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-07-1-1
+- interaction_id: INT-KARATE-R002-07-1-2
+  name: 作成／転送／検証失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-23
+  event_id: EVT-KARATE-R002-07-1
+  function_id: FN-KARATE-10
+  data_store_operations:
+  - data_store_id: DS-KARATE-01
+    operations:
+    - R
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  - data_store_id: DS-KARATE-05
+    operations:
+    - R
+  - data_store_id: DS-KARATE-06
+    operations:
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - R
+  - data_store_id: DS-KARATE-07
+    operations:
+    - C
+    - R
+    - U
+    - D
+  - data_store_id: DS-KARATE-09
+    operations:
+    - C
+  end_interface_id: IF-KARATE-24
+  preconditions:
+  - 図中の分岐条件：作成／転送／検証失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 失敗対象・理由・最後の正常コピーを表示。正常コピーを保護
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-07-1-2
+unknowns: []

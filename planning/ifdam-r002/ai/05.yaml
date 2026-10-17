@@ -1,0 +1,125 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-05
+name: 参加者と道場QRを準備する
+workset_id: WS-KARATE-05
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-05'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/05.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/05.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-05
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: IF-KARATE-21
+  name: 試作準備の指示
+  interface_type: other
+  business_purpose: 試作準備の指示
+  displayed_information:
+  - 指定した内容・準備結果
+  input_information:
+  - 許可参加者
+  - 試験用道場名
+  available_actions:
+  - 準備を実行
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-21
+events:
+- event_id: EVT-KARATE-R002-05-1
+  name: 準備を実行する
+  source_interface_id: IF-KARATE-21
+  business_trigger: 準備を実行する
+  input_information: &id001
+  - 依頼者指定の参加者
+  - 試験用道場名
+  source_locations:
+  - planning/ifdam-r002/index.html#event-05-1
+functions:
+- function_id: FN-KARATE-08
+  name: 参加者と道場を準備する
+  business_purpose: 参加者と道場を準備する
+  inputs: *id001
+  outputs:
+  - 参加許可・道場名・配布用QR
+  - 準備結果
+  normal_result:
+  - 参加許可・道場名・配布用QR|準備結果
+  business_rules:
+  - 依頼者が配布し責任者が掲示
+  - 1つのQRが複数道場を指さない
+  - 一般利用者への保守画面提供ではない
+  - 道場名変更の業務運用は今回決定しない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-08
+data_stores:
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-08
+  name: 試作参加許可
+  business_meaning: 依頼者が指定したGoogle利用者の許可情報。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-08
+  source_locations:
+  - planning/ifdam-r002/index.html#data-08
+interactions:
+- interaction_id: INT-KARATE-R002-05-1-1
+  name: 準備成功
+  flow_type: normal
+  start_interface_id: IF-KARATE-21
+  event_id: EVT-KARATE-R002-05-1
+  function_id: FN-KARATE-08
+  data_store_operations:
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - R
+  end_interface_id: IF-KARATE-21
+  preconditions:
+  - 図中の分岐条件：準備成功
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 参加許可・道場・QRと結果を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-05-1-1
+- interaction_id: INT-KARATE-R002-05-1-2
+  name: 準備失敗
+  flow_type: exception
+  start_interface_id: IF-KARATE-21
+  event_id: EVT-KARATE-R002-05-1
+  function_id: FN-KARATE-08
+  data_store_operations:
+  - data_store_id: DS-KARATE-03
+    operations:
+    - C
+    - R
+  - data_store_id: DS-KARATE-08
+    operations:
+    - C
+    - R
+  end_interface_id: IF-KARATE-21
+  preconditions:
+  - 図中の分岐条件：準備失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 失敗対象と理由を示し全体を完了扱いしない
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-05-1-2
+unknowns: []

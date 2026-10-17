@@ -1,0 +1,41 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U26["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>試作終了の指示</b><br/><small>IF-KARATE-26</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>終了日・削除結果・残存対象</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>依頼者が決めた終了日<br/>削除対象の所在</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>削除を実行</td></tr></table>"]:::ui
+  F12(["試作データを削除する<br/>FN-KARATE-12"]):::function
+  D01[("アカウント<br/>DS-KARATE-01")]:::data
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  D03[("道場<br/>DS-KARATE-03")]:::data
+  D04[("出席<br/>DS-KARATE-04")]:::data
+  D05[("操作の確認情報<br/>DS-KARATE-05")]:::data
+  D06[("訂正履歴<br/>DS-KARATE-06")]:::data
+  D07[("バックアップ<br/>DS-KARATE-07")]:::data
+  D08[("試作参加許可<br/>DS-KARATE-08")]:::data
+  D09[("運用記録<br/>DS-KARATE-09")]:::data
+  E1@{ shape: bang, label: "削除を実行する<br/>E1" }
+  class E1 event
+  U26 --> E1
+  E1 --> F12
+  F12 -->|"全対象削除を確認 [1.1]"| U26
+  F12 -->|"残存／削除失敗 [1.2]"| U26
+  D01 -.->|R| F12
+  F12 -.->|"D"| D01
+  D02 -.->|R| F12
+  F12 -.->|"D"| D02
+  D03 -.->|R| F12
+  F12 -.->|"D"| D03
+  D04 -.->|R| F12
+  F12 -.->|"D"| D04
+  D05 -.->|R| F12
+  F12 -.->|"D"| D05
+  D06 -.->|R| F12
+  F12 -.->|"D"| D06
+  D07 -.->|R| F12
+  F12 -.->|"D"| D07
+  D08 -.->|R| F12
+  F12 -.->|"D"| D08
+  D09 -.->|R| F12
+  F12 -.->|"D"| D09
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

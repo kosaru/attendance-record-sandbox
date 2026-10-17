@@ -1,0 +1,22 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U02["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>会員一覧</b><br/><small>UI-KARATE-02</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>@{会員名}<br/>対象なし／取得エラー</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>追加<br/>会員を選ぶ<br/>再読込</td></tr></table>"]:::ui
+  U14["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>登録できない</b><br/><small>UI-KARATE-14</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>不明QR／権限なし／確定失敗<br/>スタンプを追加していない</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>QRへ戻る<br/>会員一覧へ</td></tr></table>"]:::ui
+  U15["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>出席帳の取得エラー</b><br/><small>UI-KARATE-15</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>会員名・対象年<br/>回数は取得できていない</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>再読込<br/>会員変更</td></tr></table>"]:::ui
+  F14(["会員一覧を取得する<br/>FN-KARATE-14"]):::function
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  E1@{ shape: bang, label: "会員変更を押す<br/>E1" }
+  class E1 event
+  U15 --> E1
+  E1 --> F14
+  F14 -->|"一覧取得 [1.1]"| U02
+  E2@{ shape: bang, label: "会員一覧へを押す<br/>E2" }
+  class E2 event
+  U14 --> E2
+  E2 --> F14
+  F14 -->|"一覧取得 [2.1]"| U02
+  D02 -.->|R| F14
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

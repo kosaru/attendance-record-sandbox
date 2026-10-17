@@ -1,20 +1,10 @@
 {
-  "date": "2026-09-22",
-  "schema_valid": true,
-  "references_resolvable": true,
-  "interaction_ids_unique": true,
-  "requirements_mapped": true,
-  "ifdam_count": 5,
-  "interaction_count": 27,
-  "blocking_unknowns": [
-    "U01",
-    "U02"
-  ],
-  "visual_review": "27 PDF pages rendered and contact sheets reviewed; ERD and attendance flow inspected at page resolution; no clipping found",
-  "formal_baseline": null,
-  "candidate_ready": false,
-  "application_tests": "not performed; no implementation",
-  "rendered_diagrams": 30,
-  "broken_images": 0,
-  "semantic_review": "rules and exception outcomes compared against source decisions; U01/U02 left open"
+  "status": "withdrawn",
+  "date": "2026-10-17",
+  "semantic_consistency_verified": false,
+  "mapping_complete": false,
+  "reason": "原資料記法・意味照合の不足。以前の検証表明を現行の合格証拠として使用しない。",
+  "previous_report_commit": "abb46efa2bf9298881afd78f6d735ff5b6d803fb",
+  "replacement": "planning/ifdam-r002/validation.json",
+  "formal_baseline": null
 }

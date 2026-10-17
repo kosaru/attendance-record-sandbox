@@ -3,7 +3,7 @@ baseline_candidate:
   baseline_id: REQ-WS-KARATE-04-R001
   workset_id: WS-KARATE-04
   revision: R001
-  package_status: candidate
+  package_status: withdrawn
   title: 出席記録を確認する
   purpose: 出席記録を確認する
   change_summary: 合意済み要件を統合しIFDAM・データ・対応表を追加した確認候補
@@ -89,9 +89,9 @@ mapping:
   - planning/review/ai/mapping.json
   required_mapping_ids:
   - MAP-KARATE-REVIEW-01
-  all_human_artifacts_mapped: true
-  all_ai_artifacts_mapped: true
-  bidirectional_traceability_verified: true
+  all_human_artifacts_mapped: false
+  all_ai_artifacts_mapped: false
+  bidirectional_traceability_verified: false
 supporting_artifacts:
   conceptual_data_model_paths:
   - planning/review/index.html
@@ -141,24 +141,24 @@ human_ai_synchronization:
   human_artifacts_present: true
   review_snapshots_present: true
   ai_artifacts_present: true
-  semantic_consistency_verified: true
-  mapping_complete: true
+  semantic_consistency_verified: false
+  mapping_complete: false
   ids_unique: true
   references_resolvable: true
   schemas_valid: true
-  checked_by: Codex requirement artifact review
-  checked_at: '2026-09-22'
+  checked_by: R001 verification withdrawal
+  checked_at: '2026-10-17'
   evidence_paths:
-  - planning/review/validation.json
+  - planning/ifdam-r002/audit.md
 candidate_readiness:
-  scope_complete: true
-  workset_purpose_confirmable: true
-  ui_function_data_defined: true
-  required_ifdams_defined: true
-  interactions_explicit: true
-  human_artifacts_reviewable: true
-  human_ai_synchronization_passed: true
-  dependencies_controlled: true
+  scope_complete: false
+  workset_purpose_confirmable: false
+  ui_function_data_defined: false
+  required_ifdams_defined: false
+  interactions_explicit: false
+  human_artifacts_reviewable: false
+  human_ai_synchronization_passed: false
+  dependencies_controlled: false
   no_blocking_unresolved_items: false
   candidate_review_package_complete: false
   ready_for_human_decision: false
@@ -201,5 +201,6 @@ immutability:
   changes_require_new_baseline_id: true
   previous_baseline_remains_traceable: true
 notes:
+- '2026-10-17: 記法と意味照合の不備により候補草案を撤回。R002は別途draftとして作成し、候補完成・Baseline成立とはしない。'
 - レビュー用の候補草案。Release側要件PRとCandidate Headの固定前であり、正式承認を求める完成Packageではない。
 - 図表による業務表現の妥当性は依頼者が確認する。今回の内部検証は正式Gateやアプリ動作試験ではない。

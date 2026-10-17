@@ -1,0 +1,125 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-02B
+name: 記録対象の会員を選ぶ
+workset_id: WS-KARATE-02
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-02B'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/02B.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/02B.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-02B
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 会員一覧
+  displayed_information:
+  - '@{会員名}'
+  - 対象なし／取得エラー
+  input_information: []
+  available_actions:
+  - 追加
+  - 会員を選ぶ
+  - 再読込
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-02
+- interface_id: UI-KARATE-04
+  name: 出席帳
+  interface_type: screen
+  business_purpose: 出席帳
+  displayed_information:
+  - 会員名・対象年・年間回数
+  - '@{道場名・出席日}'
+  - 読込中／0件
+  input_information:
+  - 対象年
+  available_actions:
+  - QRを読む
+  - 年を選ぶ
+  - 会員変更
+  - 訂正案内
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-04
+events:
+- event_id: EVT-KARATE-R002-02B-1
+  name: 会員を選ぶ
+  source_interface_id: UI-KARATE-02
+  business_trigger: 会員を選ぶ
+  input_information: &id001
+  - 利用者
+  - 選んだ会員
+  source_locations:
+  - planning/ifdam-r002/index.html#event-02B-1
+functions:
+- function_id: FN-KARATE-03
+  name: 会員の利用権限を確認する
+  business_purpose: 会員の利用権限を確認する
+  inputs: *id001
+  outputs:
+  - 所有確認済みの会員
+  - 対象なし／権限エラー
+  normal_result:
+  - 所有確認済みの会員|対象なし／権限エラー
+  business_rules:
+  - 他人の会員を表示しない
+  - 所有確認後に出席帳を取得する
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-03
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+interactions:
+- interaction_id: INT-KARATE-R002-02B-1-1
+  name: 本人の会員
+  flow_type: normal
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-R002-02B-1
+  function_id: FN-KARATE-03
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-04
+  preconditions:
+  - 図中の分岐条件：本人の会員
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 選択した会員を保持してWS04へ
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02B-1-1
+- interaction_id: INT-KARATE-R002-02B-1-2
+  name: 対象なし／権限なし
+  flow_type: exception
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-R002-02B-1
+  function_id: FN-KARATE-03
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：対象なし／権限なし
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 対象記録を表示せず一覧に理由を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02B-1-2
+unknowns: []

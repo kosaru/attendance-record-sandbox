@@ -1,0 +1,15 @@
+erDiagram
+ ACCOUNT ||--o{ MEMBER : owns
+ MEMBER ||--o{ ATTENDANCE : attends
+ DOJO ||--o{ ATTENDANCE : at
+ MEMBER o|--o{ CORRECTION : member_target
+ ATTENDANCE o|--o{ CORRECTION : attendance_target
+ MEMBER ||--o{ OPERATION : requested_for
+ DOJO ||--o{ OPERATION : requested_at
+ ATTENDANCE o|--o{ OPERATION : confirmed_result
+ ACCOUNT { string identity }
+ MEMBER { string member_id string name }
+ DOJO { string dojo_id string name string qr_reference }
+ ATTENDANCE { string attendance_id date attendance_day string state }
+ OPERATION { string operation_id date accepted_day string result }
+ CORRECTION { string target_kind string target_id string before_after string reason string actor datetime changed_at }

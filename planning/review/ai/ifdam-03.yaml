@@ -2,7 +2,7 @@ schema_version: '2.0'
 ifdam_id: IFDAM-KARATE-03
 name: QRで出席を記録する
 workset_id: WS-KARATE-03
-artifact_status: review
+artifact_status: obsolete
 source_artifacts:
 - artifact_id: HA-KARATE-REVIEW-01
   artifact_type: other

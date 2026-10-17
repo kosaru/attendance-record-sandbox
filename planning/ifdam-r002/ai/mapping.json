@@ -1,0 +1,2280 @@
+{
+  "revision": "R002",
+  "status": "draft",
+  "meaning_approval": false,
+  "source_book_pages": [
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    125,
+    126,
+    127,
+    128,
+    129,
+    134,
+    135,
+    136,
+    150,
+    151
+  ],
+  "interactions": [
+    {
+      "interaction_id": "INT-KARATE-R002-01-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-01-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_nodes": [
+        "U01",
+        "E1",
+        "F01",
+        "U02"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/01.yaml",
+      "event_id": "EVT-KARATE-R002-01-1",
+      "function_id": "FN-KARATE-01"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-01-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-01-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_nodes": [
+        "U01",
+        "E1",
+        "F01",
+        "U01"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/01.yaml",
+      "event_id": "EVT-KARATE-R002-01-1",
+      "function_id": "FN-KARATE-01"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-01-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-01-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_nodes": [
+        "U02",
+        "E2",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/01.yaml",
+      "event_id": "EVT-KARATE-R002-01-2",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-01-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-01-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_nodes": [
+        "U02",
+        "E2",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/01.yaml",
+      "event_id": "EVT-KARATE-R002-01-2",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02A-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02A-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_nodes": [
+        "U02",
+        "E1",
+        "F15",
+        "U03"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/02A.yaml",
+      "event_id": "EVT-KARATE-R002-02A-1",
+      "function_id": "FN-KARATE-15"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02A-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02A-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_nodes": [
+        "U03",
+        "E2",
+        "F02",
+        "U02"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/02A.yaml",
+      "event_id": "EVT-KARATE-R002-02A-2",
+      "function_id": "FN-KARATE-02"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02A-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02A-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_nodes": [
+        "U03",
+        "E2",
+        "F02",
+        "U03"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/02A.yaml",
+      "event_id": "EVT-KARATE-R002-02A-2",
+      "function_id": "FN-KARATE-02"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02A-3-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02A-3-1",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_nodes": [
+        "U03",
+        "E3",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "3.1",
+      "yaml_path": "planning/ifdam-r002/ai/02A.yaml",
+      "event_id": "EVT-KARATE-R002-02A-3",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02B-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02B-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_nodes": [
+        "U02",
+        "E1",
+        "F03",
+        "U04"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/02B.yaml",
+      "event_id": "EVT-KARATE-R002-02B-1",
+      "function_id": "FN-KARATE-03"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-02B-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-02B-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_nodes": [
+        "U02",
+        "E1",
+        "F03",
+        "U02"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/02B.yaml",
+      "event_id": "EVT-KARATE-R002-02B-1",
+      "function_id": "FN-KARATE-03"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F13",
+        "U05"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-1",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F13",
+        "U13"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-1",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U13",
+        "E2",
+        "F13",
+        "U05"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-2",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U13",
+        "E2",
+        "F13",
+        "U13"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-2",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-3-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-3-1",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U05",
+        "E3",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "3.1",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-3",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03A-3-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03A-3-2",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_nodes": [
+        "U05",
+        "E3",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "3.2",
+      "yaml_path": "planning/ifdam-r002/ai/03A.yaml",
+      "event_id": "EVT-KARATE-R002-03A-3",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03B-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03B-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_nodes": [
+        "U05",
+        "E1",
+        "F04",
+        "U06"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/03B.yaml",
+      "event_id": "EVT-KARATE-R002-03B-1",
+      "function_id": "FN-KARATE-04"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03B-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03B-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_nodes": [
+        "U05",
+        "E1",
+        "F04",
+        "U06"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/03B.yaml",
+      "event_id": "EVT-KARATE-R002-03B-1",
+      "function_id": "FN-KARATE-04"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03B-1-3",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03B-1-3",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_nodes": [
+        "U05",
+        "E1",
+        "F04",
+        "U14"
+      ],
+      "branch_label": "1.3",
+      "yaml_path": "planning/ifdam-r002/ai/03B.yaml",
+      "event_id": "EVT-KARATE-R002-03B-1",
+      "function_id": "FN-KARATE-04"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03B-1-4",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03B-1-4",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_nodes": [
+        "U05",
+        "E1",
+        "F04",
+        "U07"
+      ],
+      "branch_label": "1.4",
+      "yaml_path": "planning/ifdam-r002/ai/03B.yaml",
+      "event_id": "EVT-KARATE-R002-03B-1",
+      "function_id": "FN-KARATE-04"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03C-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03C-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_nodes": [
+        "U07",
+        "E1",
+        "F06",
+        "U06"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/03C.yaml",
+      "event_id": "EVT-KARATE-R002-03C-1",
+      "function_id": "FN-KARATE-06"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03C-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03C-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_nodes": [
+        "U07",
+        "E1",
+        "F06",
+        "U16"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/03C.yaml",
+      "event_id": "EVT-KARATE-R002-03C-1",
+      "function_id": "FN-KARATE-06"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03C-1-3",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03C-1-3",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_nodes": [
+        "U07",
+        "E1",
+        "F06",
+        "U07"
+      ],
+      "branch_label": "1.3",
+      "yaml_path": "planning/ifdam-r002/ai/03C.yaml",
+      "event_id": "EVT-KARATE-R002-03C-1",
+      "function_id": "FN-KARATE-06"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U06",
+        "E1",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U06",
+        "E1",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U14",
+        "E2",
+        "F13",
+        "U05"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-2",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U14",
+        "E2",
+        "F13",
+        "U13"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-2",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-3-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-3-1",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U16",
+        "E3",
+        "F13",
+        "U05"
+      ],
+      "branch_label": "3.1",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-3",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-03D-3-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-03D-3-2",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_nodes": [
+        "U16",
+        "E3",
+        "F13",
+        "U13"
+      ],
+      "branch_label": "3.2",
+      "yaml_path": "planning/ifdam-r002/ai/03D.yaml",
+      "event_id": "EVT-KARATE-R002-03D-3",
+      "function_id": "FN-KARATE-13"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04A-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04A-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/04A.yaml",
+      "event_id": "EVT-KARATE-R002-04A-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04A-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04A-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/04A.yaml",
+      "event_id": "EVT-KARATE-R002-04A-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04A-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04A-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_nodes": [
+        "U15",
+        "E2",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/04A.yaml",
+      "event_id": "EVT-KARATE-R002-04A-2",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04A-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04A-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_nodes": [
+        "U15",
+        "E2",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/04A.yaml",
+      "event_id": "EVT-KARATE-R002-04A-2",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04B-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04B-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F07",
+        "U08"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/04B.yaml",
+      "event_id": "EVT-KARATE-R002-04B-1",
+      "function_id": "FN-KARATE-07"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04B-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04B-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_nodes": [
+        "U08",
+        "E2",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/04B.yaml",
+      "event_id": "EVT-KARATE-R002-04B-2",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-04B-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-04B-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_nodes": [
+        "U08",
+        "E2",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/04B.yaml",
+      "event_id": "EVT-KARATE-R002-04B-2",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-05-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-05-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_nodes": [
+        "U21",
+        "E1",
+        "F08",
+        "U21"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/05.yaml",
+      "event_id": "EVT-KARATE-R002-05-1",
+      "function_id": "FN-KARATE-08"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-05-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-05-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_nodes": [
+        "U21",
+        "E1",
+        "F08",
+        "U21"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/05.yaml",
+      "event_id": "EVT-KARATE-R002-05-1",
+      "function_id": "FN-KARATE-08"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-06-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-06-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_nodes": [
+        "U22",
+        "E1",
+        "F09",
+        "U22"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/06.yaml",
+      "event_id": "EVT-KARATE-R002-06-1",
+      "function_id": "FN-KARATE-09"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-06-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-06-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_nodes": [
+        "U22",
+        "E1",
+        "F09",
+        "U22"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/06.yaml",
+      "event_id": "EVT-KARATE-R002-06-1",
+      "function_id": "FN-KARATE-09"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-07-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-07-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_nodes": [
+        "U23",
+        "E1",
+        "F10",
+        "U24"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/07.yaml",
+      "event_id": "EVT-KARATE-R002-07-1",
+      "function_id": "FN-KARATE-10"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-07-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-07-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_nodes": [
+        "U23",
+        "E1",
+        "F10",
+        "U24"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/07.yaml",
+      "event_id": "EVT-KARATE-R002-07-1",
+      "function_id": "FN-KARATE-10"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-08-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-08-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_nodes": [
+        "U25",
+        "E1",
+        "F11",
+        "U25"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/08.yaml",
+      "event_id": "EVT-KARATE-R002-08-1",
+      "function_id": "FN-KARATE-11"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-08-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-08-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_nodes": [
+        "U25",
+        "E1",
+        "F11",
+        "U25"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/08.yaml",
+      "event_id": "EVT-KARATE-R002-08-1",
+      "function_id": "FN-KARATE-11"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-09-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-09-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_nodes": [
+        "U26",
+        "E1",
+        "F12",
+        "U26"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/09.yaml",
+      "event_id": "EVT-KARATE-R002-09-1",
+      "function_id": "FN-KARATE-12"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-09-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-09-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_nodes": [
+        "U26",
+        "E1",
+        "F12",
+        "U26"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/09.yaml",
+      "event_id": "EVT-KARATE-R002-09-1",
+      "function_id": "FN-KARATE-12"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV1-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV1-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_nodes": [
+        "U04",
+        "E1",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV1.yaml",
+      "event_id": "EVT-KARATE-R002-NAV1-1",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV1-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV1-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_nodes": [
+        "U06",
+        "E2",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV1.yaml",
+      "event_id": "EVT-KARATE-R002-NAV1-2",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV2-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV2-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_nodes": [
+        "U15",
+        "E1",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV2.yaml",
+      "event_id": "EVT-KARATE-R002-NAV2-1",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV2-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV2-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_nodes": [
+        "U14",
+        "E2",
+        "F14",
+        "U02"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV2.yaml",
+      "event_id": "EVT-KARATE-R002-NAV2-2",
+      "function_id": "FN-KARATE-14"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV3-1-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV3-1-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_nodes": [
+        "U13",
+        "E1",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "1.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV3.yaml",
+      "event_id": "EVT-KARATE-R002-NAV3-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV3-1-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV3-1-2",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_nodes": [
+        "U13",
+        "E1",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "1.2",
+      "yaml_path": "planning/ifdam-r002/ai/NAV3.yaml",
+      "event_id": "EVT-KARATE-R002-NAV3-1",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV3-2-1",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV3-2-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_nodes": [
+        "U16",
+        "E2",
+        "F05",
+        "U04"
+      ],
+      "branch_label": "2.1",
+      "yaml_path": "planning/ifdam-r002/ai/NAV3.yaml",
+      "event_id": "EVT-KARATE-R002-NAV3-2",
+      "function_id": "FN-KARATE-05"
+    },
+    {
+      "interaction_id": "INT-KARATE-R002-NAV3-2-2",
+      "human_location": "planning/ifdam-r002/index.html#INT-KARATE-R002-NAV3-2-2",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_nodes": [
+        "U16",
+        "E2",
+        "F05",
+        "U15"
+      ],
+      "branch_label": "2.2",
+      "yaml_path": "planning/ifdam-r002/ai/NAV3.yaml",
+      "event_id": "EVT-KARATE-R002-NAV3-2",
+      "function_id": "FN-KARATE-05"
+    }
+  ],
+  "elements": [
+    {
+      "id": "UI-KARATE-01",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-01",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "U01",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "interfaces.UI-KARATE-01"
+    },
+    {
+      "id": "UI-KARATE-02",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-02",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "U02",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "interfaces.UI-KARATE-02"
+    },
+    {
+      "id": "FN-KARATE-01",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-01",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "F01",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "functions.FN-KARATE-01"
+    },
+    {
+      "id": "FN-KARATE-14",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-14",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "F14",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "functions.FN-KARATE-14"
+    },
+    {
+      "id": "DS-KARATE-01",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-01",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "D01",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "data_stores.DS-KARATE-01"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-08",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-08",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "D08",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "data_stores.DS-KARATE-08"
+    },
+    {
+      "id": "EVT-KARATE-R002-01-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-01-1",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-01-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-01-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-01-2",
+      "diagram": "planning/ifdam-r002/diagrams/01.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/01.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-01-2"
+    },
+    {
+      "id": "UI-KARATE-02",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-02",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "U02",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-02"
+    },
+    {
+      "id": "UI-KARATE-03",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-03",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "U03",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-03"
+    },
+    {
+      "id": "FN-KARATE-02",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-02",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "F02",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "functions.FN-KARATE-02"
+    },
+    {
+      "id": "FN-KARATE-14",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-14",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "F14",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "functions.FN-KARATE-14"
+    },
+    {
+      "id": "FN-KARATE-15",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-15",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "F15",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "functions.FN-KARATE-15"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "EVT-KARATE-R002-02A-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-02A-1",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-02A-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-02A-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-02A-2",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-02A-2"
+    },
+    {
+      "id": "EVT-KARATE-R002-02A-3",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-02A-3",
+      "diagram": "planning/ifdam-r002/diagrams/02A.svg",
+      "diagram_node": "E3",
+      "yaml": "planning/ifdam-r002/ai/02A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-02A-3"
+    },
+    {
+      "id": "UI-KARATE-02",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-02",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_node": "U02",
+      "yaml": "planning/ifdam-r002/ai/02B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-02"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/02B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "FN-KARATE-03",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-03",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_node": "F03",
+      "yaml": "planning/ifdam-r002/ai/02B.yaml",
+      "yaml_location": "functions.FN-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/02B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "EVT-KARATE-R002-02B-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-02B-1",
+      "diagram": "planning/ifdam-r002/diagrams/02B.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/02B.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-02B-1"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-05",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-05",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "U05",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-05"
+    },
+    {
+      "id": "UI-KARATE-13",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-13",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "U13",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-13"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "FN-KARATE-05",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-05",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "F05",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "functions.FN-KARATE-05"
+    },
+    {
+      "id": "FN-KARATE-13",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-13",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "F13",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "functions.FN-KARATE-13"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "EVT-KARATE-R002-03A-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03A-1",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03A-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-03A-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03A-2",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03A-2"
+    },
+    {
+      "id": "EVT-KARATE-R002-03A-3",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03A-3",
+      "diagram": "planning/ifdam-r002/diagrams/03A.svg",
+      "diagram_node": "E3",
+      "yaml": "planning/ifdam-r002/ai/03A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03A-3"
+    },
+    {
+      "id": "UI-KARATE-05",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-05",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "U05",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-05"
+    },
+    {
+      "id": "UI-KARATE-06",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-06",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "U06",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-06"
+    },
+    {
+      "id": "UI-KARATE-07",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-07",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "U07",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-07"
+    },
+    {
+      "id": "UI-KARATE-14",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-14",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "U14",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-14"
+    },
+    {
+      "id": "FN-KARATE-04",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-04",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "F04",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "functions.FN-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-05",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-05",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "D05",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-05"
+    },
+    {
+      "id": "EVT-KARATE-R002-03B-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03B-1",
+      "diagram": "planning/ifdam-r002/diagrams/03B.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/03B.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03B-1"
+    },
+    {
+      "id": "UI-KARATE-06",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-06",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "U06",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "interfaces.UI-KARATE-06"
+    },
+    {
+      "id": "UI-KARATE-07",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-07",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "U07",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "interfaces.UI-KARATE-07"
+    },
+    {
+      "id": "UI-KARATE-16",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-16",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "U16",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "interfaces.UI-KARATE-16"
+    },
+    {
+      "id": "FN-KARATE-06",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-06",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "F06",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "functions.FN-KARATE-06"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-05",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-05",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "D05",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "data_stores.DS-KARATE-05"
+    },
+    {
+      "id": "EVT-KARATE-R002-03C-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03C-1",
+      "diagram": "planning/ifdam-r002/diagrams/03C.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/03C.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03C-1"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-05",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-05",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U05",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-05"
+    },
+    {
+      "id": "UI-KARATE-06",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-06",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U06",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-06"
+    },
+    {
+      "id": "UI-KARATE-13",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-13",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U13",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-13"
+    },
+    {
+      "id": "UI-KARATE-14",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-14",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U14",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-14"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "UI-KARATE-16",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-16",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "U16",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "interfaces.UI-KARATE-16"
+    },
+    {
+      "id": "FN-KARATE-05",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-05",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "F05",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "functions.FN-KARATE-05"
+    },
+    {
+      "id": "FN-KARATE-13",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-13",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "F13",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "functions.FN-KARATE-13"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "EVT-KARATE-R002-03D-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03D-1",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03D-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-03D-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03D-2",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03D-2"
+    },
+    {
+      "id": "EVT-KARATE-R002-03D-3",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-03D-3",
+      "diagram": "planning/ifdam-r002/diagrams/03D.svg",
+      "diagram_node": "E3",
+      "yaml": "planning/ifdam-r002/ai/03D.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-03D-3"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "FN-KARATE-05",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-05",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "F05",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "functions.FN-KARATE-05"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "EVT-KARATE-R002-04A-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-04A-1",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-04A-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-04A-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-04A-2",
+      "diagram": "planning/ifdam-r002/diagrams/04A.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/04A.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-04A-2"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-08",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-08",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "U08",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-08"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "FN-KARATE-05",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-05",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "F05",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "functions.FN-KARATE-05"
+    },
+    {
+      "id": "FN-KARATE-07",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-07",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "F07",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "functions.FN-KARATE-07"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "EVT-KARATE-R002-04B-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-04B-1",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-04B-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-04B-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-04B-2",
+      "diagram": "planning/ifdam-r002/diagrams/04B.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/04B.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-04B-2"
+    },
+    {
+      "id": "IF-KARATE-21",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-21",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_node": "U21",
+      "yaml": "planning/ifdam-r002/ai/05.yaml",
+      "yaml_location": "interfaces.IF-KARATE-21"
+    },
+    {
+      "id": "FN-KARATE-08",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-08",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_node": "F08",
+      "yaml": "planning/ifdam-r002/ai/05.yaml",
+      "yaml_location": "functions.FN-KARATE-08"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/05.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-08",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-08",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_node": "D08",
+      "yaml": "planning/ifdam-r002/ai/05.yaml",
+      "yaml_location": "data_stores.DS-KARATE-08"
+    },
+    {
+      "id": "EVT-KARATE-R002-05-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-05-1",
+      "diagram": "planning/ifdam-r002/diagrams/05.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/05.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-05-1"
+    },
+    {
+      "id": "IF-KARATE-22",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-22",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "U22",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "interfaces.IF-KARATE-22"
+    },
+    {
+      "id": "FN-KARATE-09",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-09",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "F09",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "functions.FN-KARATE-09"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-06",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-06",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "D06",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "data_stores.DS-KARATE-06"
+    },
+    {
+      "id": "EVT-KARATE-R002-06-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-06-1",
+      "diagram": "planning/ifdam-r002/diagrams/06.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/06.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-06-1"
+    },
+    {
+      "id": "IF-KARATE-23",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-23",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "U23",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "interfaces.IF-KARATE-23"
+    },
+    {
+      "id": "IF-KARATE-24",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-24",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "U24",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "interfaces.IF-KARATE-24"
+    },
+    {
+      "id": "FN-KARATE-10",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-10",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "F10",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "functions.FN-KARATE-10"
+    },
+    {
+      "id": "DS-KARATE-01",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-01",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D01",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-01"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-05",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-05",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D05",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-05"
+    },
+    {
+      "id": "DS-KARATE-06",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-06",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D06",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-06"
+    },
+    {
+      "id": "DS-KARATE-07",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-07",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D07",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-07"
+    },
+    {
+      "id": "DS-KARATE-08",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-08",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D08",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-08"
+    },
+    {
+      "id": "DS-KARATE-09",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-09",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "D09",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "data_stores.DS-KARATE-09"
+    },
+    {
+      "id": "EVT-KARATE-R002-07-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-07-1",
+      "diagram": "planning/ifdam-r002/diagrams/07.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/07.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-07-1"
+    },
+    {
+      "id": "IF-KARATE-25",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-25",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "U25",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "interfaces.IF-KARATE-25"
+    },
+    {
+      "id": "FN-KARATE-11",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-11",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "F11",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "functions.FN-KARATE-11"
+    },
+    {
+      "id": "DS-KARATE-01",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-01",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D01",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-01"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-05",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-05",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D05",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-05"
+    },
+    {
+      "id": "DS-KARATE-06",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-06",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D06",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-06"
+    },
+    {
+      "id": "DS-KARATE-07",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-07",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D07",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-07"
+    },
+    {
+      "id": "DS-KARATE-08",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-08",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D08",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-08"
+    },
+    {
+      "id": "DS-KARATE-09",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-09",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "D09",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "data_stores.DS-KARATE-09"
+    },
+    {
+      "id": "EVT-KARATE-R002-08-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-08-1",
+      "diagram": "planning/ifdam-r002/diagrams/08.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/08.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-08-1"
+    },
+    {
+      "id": "IF-KARATE-26",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-26",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "U26",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "interfaces.IF-KARATE-26"
+    },
+    {
+      "id": "FN-KARATE-12",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-12",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "F12",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "functions.FN-KARATE-12"
+    },
+    {
+      "id": "DS-KARATE-01",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-01",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D01",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-01"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "DS-KARATE-05",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-05",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D05",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-05"
+    },
+    {
+      "id": "DS-KARATE-06",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-06",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D06",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-06"
+    },
+    {
+      "id": "DS-KARATE-07",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-07",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D07",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-07"
+    },
+    {
+      "id": "DS-KARATE-08",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-08",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D08",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-08"
+    },
+    {
+      "id": "DS-KARATE-09",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-09",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "D09",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "data_stores.DS-KARATE-09"
+    },
+    {
+      "id": "EVT-KARATE-R002-09-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-09-1",
+      "diagram": "planning/ifdam-r002/diagrams/09.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/09.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-09-1"
+    },
+    {
+      "id": "UI-KARATE-02",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-02",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "U02",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "interfaces.UI-KARATE-02"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-06",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-06",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "U06",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "interfaces.UI-KARATE-06"
+    },
+    {
+      "id": "FN-KARATE-14",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-14",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "F14",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "functions.FN-KARATE-14"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV1-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV1-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV1-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV1-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV1-2",
+      "diagram": "planning/ifdam-r002/diagrams/NAV1.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/NAV1.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV1-2"
+    },
+    {
+      "id": "UI-KARATE-02",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-02",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "U02",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "interfaces.UI-KARATE-02"
+    },
+    {
+      "id": "UI-KARATE-14",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-14",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "U14",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "interfaces.UI-KARATE-14"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "FN-KARATE-14",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-14",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "F14",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "functions.FN-KARATE-14"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV2-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV2-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV2-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV2-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV2-2",
+      "diagram": "planning/ifdam-r002/diagrams/NAV2.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/NAV2.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV2-2"
+    },
+    {
+      "id": "UI-KARATE-04",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-04",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "U04",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "interfaces.UI-KARATE-04"
+    },
+    {
+      "id": "UI-KARATE-13",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-13",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "U13",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "interfaces.UI-KARATE-13"
+    },
+    {
+      "id": "UI-KARATE-15",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-15",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "U15",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "interfaces.UI-KARATE-15"
+    },
+    {
+      "id": "UI-KARATE-16",
+      "type": "interface",
+      "human_location": "planning/ifdam-r002/index.html#ui-16",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "U16",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "interfaces.UI-KARATE-16"
+    },
+    {
+      "id": "FN-KARATE-05",
+      "type": "function",
+      "human_location": "planning/ifdam-r002/index.html#fn-05",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "F05",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "functions.FN-KARATE-05"
+    },
+    {
+      "id": "DS-KARATE-02",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-02",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "D02",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "data_stores.DS-KARATE-02"
+    },
+    {
+      "id": "DS-KARATE-03",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-03",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "D03",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "data_stores.DS-KARATE-03"
+    },
+    {
+      "id": "DS-KARATE-04",
+      "type": "data_store",
+      "human_location": "planning/ifdam-r002/index.html#data-04",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "D04",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "data_stores.DS-KARATE-04"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV3-1",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV3-1",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "E1",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV3-1"
+    },
+    {
+      "id": "EVT-KARATE-R002-NAV3-2",
+      "type": "event",
+      "human_location": "planning/ifdam-r002/index.html#event-NAV3-2",
+      "diagram": "planning/ifdam-r002/diagrams/NAV3.svg",
+      "diagram_node": "E2",
+      "yaml": "planning/ifdam-r002/ai/NAV3.yaml",
+      "yaml_location": "events.EVT-KARATE-R002-NAV3-2"
+    }
+  ]
+}

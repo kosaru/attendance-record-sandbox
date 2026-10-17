@@ -1,0 +1,145 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-NAV1
+name: 会員変更と共通の戻り操作 1
+workset_id: WS-KARATE-04
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-NAV1'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/NAV1.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/NAV1.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-NAV1
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 会員一覧
+  displayed_information:
+  - '@{会員名}'
+  - 対象なし／取得エラー
+  input_information: []
+  available_actions:
+  - 追加
+  - 会員を選ぶ
+  - 再読込
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-02
+- interface_id: UI-KARATE-04
+  name: 出席帳
+  interface_type: screen
+  business_purpose: 出席帳
+  displayed_information:
+  - 会員名・対象年・年間回数
+  - '@{道場名・出席日}'
+  - 読込中／0件
+  input_information:
+  - 対象年
+  available_actions:
+  - QRを読む
+  - 年を選ぶ
+  - 会員変更
+  - 訂正案内
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-04
+- interface_id: UI-KARATE-06
+  name: 記録結果
+  interface_type: screen
+  business_purpose: 記録結果
+  displayed_information:
+  - 会員名・道場名・出席日
+  - 保存済み／既に記録済み
+  input_information: []
+  available_actions:
+  - 出席帳へ
+  - 会員変更
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-06
+events:
+- event_id: EVT-KARATE-R002-NAV1-1
+  name: 会員変更を押す
+  source_interface_id: UI-KARATE-04
+  business_trigger: 会員変更を押す
+  input_information: &id001
+  - ログイン中の利用者
+  source_locations:
+  - planning/ifdam-r002/index.html#event-NAV1-1
+- event_id: EVT-KARATE-R002-NAV1-2
+  name: 会員変更を押す
+  source_interface_id: UI-KARATE-06
+  business_trigger: 会員変更を押す
+  input_information: *id001
+  source_locations:
+  - planning/ifdam-r002/index.html#event-NAV1-2
+functions:
+- function_id: FN-KARATE-14
+  name: 会員一覧を取得する
+  business_purpose: 会員一覧を取得する
+  inputs: *id001
+  outputs:
+  - '@{所有会員の識別情報・会員名}'
+  - 対象なし／取得エラー
+  normal_result:
+  - '@{所有会員の識別情報・会員名}|対象なし／取得エラー'
+  business_rules:
+  - 他人の会員を含めない
+  - 新規利用で0人と取得失敗を区別
+  - 回数は出席帳で表示する（一覧の回数欄はR001の未確認追加を除去）
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-14
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+interactions:
+- interaction_id: INT-KARATE-R002-NAV1-1-1
+  name: 一覧取得
+  flow_type: normal
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-R002-NAV1-1
+  function_id: FN-KARATE-14
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：一覧取得
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 取得成功なら所有会員、失敗なら一覧エラー
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-NAV1-1-1
+- interaction_id: INT-KARATE-R002-NAV1-2-1
+  name: 一覧取得
+  flow_type: normal
+  start_interface_id: UI-KARATE-06
+  event_id: EVT-KARATE-R002-NAV1-2
+  function_id: FN-KARATE-14
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：一覧取得
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 取得成功なら所有会員、失敗なら一覧エラー
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-NAV1-2-1
+unknowns: []

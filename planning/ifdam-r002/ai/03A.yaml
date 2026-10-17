@@ -1,0 +1,303 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-03A
+name: 読み取りを始める
+workset_id: WS-KARATE-03
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-03A'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/03A.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/03A.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-03A
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-04
+  name: 出席帳
+  interface_type: screen
+  business_purpose: 出席帳
+  displayed_information:
+  - 会員名・対象年・年間回数
+  - '@{道場名・出席日}'
+  - 読込中／0件
+  input_information:
+  - 対象年
+  available_actions:
+  - QRを読む
+  - 年を選ぶ
+  - 会員変更
+  - 訂正案内
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-04
+- interface_id: UI-KARATE-05
+  name: QR読み取り
+  interface_type: screen
+  business_purpose: QR読み取り
+  displayed_information:
+  - 選択会員名
+  - カメラの読み取り案内
+  input_information:
+  - 道場QR
+  available_actions:
+  - 戻る
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-05
+- interface_id: UI-KARATE-13
+  name: 読み取り前のエラー
+  interface_type: screen
+  business_purpose: 読み取り前のエラー
+  displayed_information:
+  - カメラ拒否／開始前オフライン
+  - まだ登録していない
+  input_information: []
+  available_actions:
+  - 読取を再開
+  - 出席帳へ
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-13
+- interface_id: UI-KARATE-15
+  name: 出席帳の取得エラー
+  interface_type: screen
+  business_purpose: 出席帳の取得エラー
+  displayed_information:
+  - 会員名・対象年
+  - 回数は取得できていない
+  input_information: []
+  available_actions:
+  - 再読込
+  - 会員変更
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-15
+events:
+- event_id: EVT-KARATE-R002-03A-1
+  name: QRを読むを押す
+  source_interface_id: UI-KARATE-04
+  business_trigger: QRを読むを押す
+  input_information: &id001
+  - 選択会員
+  - カメラ利用と接続の状態
+  source_locations:
+  - planning/ifdam-r002/index.html#event-03A-1
+- event_id: EVT-KARATE-R002-03A-2
+  name: 読取を再開を押す
+  source_interface_id: UI-KARATE-13
+  business_trigger: 読取を再開を押す
+  input_information: *id001
+  source_locations:
+  - planning/ifdam-r002/index.html#event-03A-2
+- event_id: EVT-KARATE-R002-03A-3
+  name: 戻るを押す
+  source_interface_id: UI-KARATE-05
+  business_trigger: 戻るを押す
+  input_information: &id002
+  - 利用者・選択会員
+  - 表示する年
+  source_locations:
+  - planning/ifdam-r002/index.html#event-03A-3
+functions:
+- function_id: FN-KARATE-05
+  name: 出席帳を取得する
+  business_purpose: 出席帳を取得する
+  inputs: *id002
+  outputs:
+  - 会員名・年・年間回数
+  - '@{道場名・出席日}'
+  - 取得エラー
+  normal_result:
+  - 会員名・年・年間回数|@{道場名・出席日}|取得エラー
+  business_rules:
+  - 所有権を確認する
+  - 1月1日から12月31日までの有効出席を数える
+  - 同日2道場は2回
+  - 取消を除外
+  - 0件と取得失敗を区別
+  - 道場名の表示はU02
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-05
+- function_id: FN-KARATE-13
+  name: QR読み取りを開始する
+  business_purpose: QR読み取りを開始する
+  inputs: *id001
+  outputs:
+  - 読み取り画面または開始前エラー
+  normal_result:
+  - 読み取り画面または開始前エラー
+  business_rules:
+  - この処理では出席保存を行わない
+  - オンラインのみ
+  - カメラ拒否時に出席成功を表示しない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-13
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+- data_store_id: DS-KARATE-03
+  name: 道場
+  business_meaning: 道場名と固定QRとの対応。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-03
+  source_locations:
+  - planning/ifdam-r002/index.html#data-03
+- data_store_id: DS-KARATE-04
+  name: 出席
+  business_meaning: 会員・道場・日本時間の日付・有効／取消状態。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-04
+  source_locations:
+  - planning/ifdam-r002/index.html#data-04
+interactions:
+- interaction_id: INT-KARATE-R002-03A-1-1
+  name: 開始可能
+  flow_type: normal
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-R002-03A-1
+  function_id: FN-KARATE-13
+  data_store_operations: []
+  end_interface_id: UI-KARATE-05
+  preconditions:
+  - 図中の分岐条件：開始可能
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 開始可能
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-1-1
+- interaction_id: INT-KARATE-R002-03A-1-2
+  name: カメラ拒否／開始前オフライン
+  flow_type: exception
+  start_interface_id: UI-KARATE-04
+  event_id: EVT-KARATE-R002-03A-1
+  function_id: FN-KARATE-13
+  data_store_operations: []
+  end_interface_id: UI-KARATE-13
+  preconditions:
+  - 図中の分岐条件：カメラ拒否／開始前オフライン
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 未登録であることと原因を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-1-2
+- interaction_id: INT-KARATE-R002-03A-2-1
+  name: 開始可能
+  flow_type: normal
+  start_interface_id: UI-KARATE-13
+  event_id: EVT-KARATE-R002-03A-2
+  function_id: FN-KARATE-13
+  data_store_operations: []
+  end_interface_id: UI-KARATE-05
+  preconditions:
+  - 図中の分岐条件：開始可能
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 開始可能
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-2-1
+- interaction_id: INT-KARATE-R002-03A-2-2
+  name: まだ開始できない
+  flow_type: exception
+  start_interface_id: UI-KARATE-13
+  event_id: EVT-KARATE-R002-03A-2
+  function_id: FN-KARATE-13
+  data_store_operations: []
+  end_interface_id: UI-KARATE-13
+  preconditions:
+  - 図中の分岐条件：まだ開始できない
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 原因を表示したまま再開を待つ
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-2-2
+- interaction_id: INT-KARATE-R002-03A-3-1
+  name: 取得成功
+  flow_type: normal
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-R002-03A-3
+  function_id: FN-KARATE-05
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  end_interface_id: UI-KARATE-04
+  preconditions:
+  - 図中の分岐条件：取得成功
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 取得成功
+  unknown_ids:
+  - U02
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-3-1
+- interaction_id: INT-KARATE-R002-03A-3-2
+  name: 取得失敗
+  flow_type: exception
+  start_interface_id: UI-KARATE-05
+  event_id: EVT-KARATE-R002-03A-3
+  function_id: FN-KARATE-05
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  - data_store_id: DS-KARATE-03
+    operations:
+    - R
+  - data_store_id: DS-KARATE-04
+    operations:
+    - R
+  end_interface_id: UI-KARATE-15
+  preconditions:
+  - 図中の分岐条件：取得失敗
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 0回と表示しない
+  unknown_ids:
+  - U02
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-03A-3-2
+unknowns:
+- unknown_id: U02
+  description: 道場名変更時、過去スタンプを当時の名称で残すか最新名称へ変えるか。
+  blocking_scope: interaction
+  affected_ids:
+  - INT-KARATE-R002-03A-3-1
+  - INT-KARATE-R002-03A-3-2
+  - INT-KARATE-R002-03B-1-1
+  - INT-KARATE-R002-03B-1-2
+  - INT-KARATE-R002-03B-1-3
+  - INT-KARATE-R002-03B-1-4
+  - INT-KARATE-R002-03C-1-1
+  - INT-KARATE-R002-03C-1-2
+  - INT-KARATE-R002-03C-1-3
+  - INT-KARATE-R002-03D-1-1
+  - INT-KARATE-R002-03D-1-2
+  - INT-KARATE-R002-04A-1-1
+  - INT-KARATE-R002-04A-1-2
+  - INT-KARATE-R002-04A-2-1
+  - INT-KARATE-R002-04A-2-2
+  - INT-KARATE-R002-04B-2-1
+  - INT-KARATE-R002-04B-2-2
+  - INT-KARATE-R002-NAV3-1-1
+  - INT-KARATE-R002-NAV3-1-2
+  - INT-KARATE-R002-NAV3-2-1
+  - INT-KARATE-R002-NAV3-2-2
+  blocking: true
+  decision_owner: 依頼者
+  status: open

@@ -1,0 +1,201 @@
+schema_version: '2.0'
+ifdam_id: IFDAM-KARATE-R002-02A
+name: 会員を追加する
+workset_id: WS-KARATE-02
+artifact_status: draft
+source_artifacts:
+- artifact_id: HA-KARATE-R002
+  artifact_type: other
+  repository_path: planning/ifdam-r002/index.html
+  source_location: '#sheet-02A'
+- artifact_id: HA-KARATE-DECISIONS
+  artifact_type: constraint
+  repository_path: planning/requests/DR-KARATE-001/decision-log.md
+  source_commit: abb46efa2bf9298881afd78f6d735ff5b6d803fb
+human_representation:
+  mermaid_source_path: planning/ifdam-r002/diagrams/02A.mmd
+  rendered_diagram_paths:
+  - planning/ifdam-r002/diagrams/02A.svg
+  review_document_paths:
+  - planning/ifdam-r002/index.html#sheet-02A
+  mapping_manifest_path: planning/ifdam-r002/ai/mapping.json
+interfaces:
+- interface_id: UI-KARATE-02
+  name: 会員一覧
+  interface_type: screen
+  business_purpose: 会員一覧
+  displayed_information:
+  - '@{会員名}'
+  - 対象なし／取得エラー
+  input_information: []
+  available_actions:
+  - 追加
+  - 会員を選ぶ
+  - 再読込
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-02
+- interface_id: UI-KARATE-03
+  name: 会員登録
+  interface_type: screen
+  business_purpose: 会員登録
+  displayed_information:
+  - 入力・保存エラー
+  input_information:
+  - 会員名
+  available_actions:
+  - 登録
+  - 戻る
+  source_locations:
+  - planning/ifdam-r002/index.html#ui-03
+events:
+- event_id: EVT-KARATE-R002-02A-1
+  name: 追加を押す
+  source_interface_id: UI-KARATE-02
+  business_trigger: 追加を押す
+  input_information: &id003
+  - 追加操作
+  source_locations:
+  - planning/ifdam-r002/index.html#event-02A-1
+- event_id: EVT-KARATE-R002-02A-2
+  name: 登録を押す
+  source_interface_id: UI-KARATE-03
+  business_trigger: 登録を押す
+  input_information: &id001
+  - ログイン中の利用者
+  - 入力した会員名
+  source_locations:
+  - planning/ifdam-r002/index.html#event-02A-2
+- event_id: EVT-KARATE-R002-02A-3
+  name: 戻るを押す
+  source_interface_id: UI-KARATE-03
+  business_trigger: 戻るを押す
+  input_information: &id002
+  - ログイン中の利用者
+  source_locations:
+  - planning/ifdam-r002/index.html#event-02A-3
+functions:
+- function_id: FN-KARATE-02
+  name: 会員を登録する
+  business_purpose: 会員を登録する
+  inputs: *id001
+  outputs:
+  - 会員識別情報・会員名
+  - 入力／保存エラー
+  normal_result:
+  - 会員識別情報・会員名|入力／保存エラー
+  business_rules:
+  - 名前は必須
+  - 同名を統合しない
+  - 保存できた場合だけ登録済みとする
+  - 保存結果不明を未保存と断定しない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-02
+- function_id: FN-KARATE-14
+  name: 会員一覧を取得する
+  business_purpose: 会員一覧を取得する
+  inputs: *id002
+  outputs:
+  - '@{所有会員の識別情報・会員名}'
+  - 対象なし／取得エラー
+  normal_result:
+  - '@{所有会員の識別情報・会員名}|対象なし／取得エラー'
+  business_rules:
+  - 他人の会員を含めない
+  - 新規利用で0人と取得失敗を区別
+  - 回数は出席帳で表示する（一覧の回数欄はR001の未確認追加を除去）
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-14
+- function_id: FN-KARATE-15
+  name: 登録画面を開く
+  business_purpose: 登録画面を開く
+  inputs: *id003
+  outputs:
+  - 空の名前入力欄
+  normal_result:
+  - 空の名前入力欄
+  business_rules:
+  - この処理でデータを作らない
+  source_locations:
+  - planning/ifdam-r002/index.html#fn-15
+data_stores:
+- data_store_id: DS-KARATE-02
+  name: 会員
+  business_meaning: 利用者に属する本人・家族。名前が同じでも別会員。
+  conceptual_model_reference: planning/ifdam-r002/index.html#data-02
+  source_locations:
+  - planning/ifdam-r002/index.html#data-02
+interactions:
+- interaction_id: INT-KARATE-R002-02A-1-1
+  name: 入力欄を表示
+  flow_type: normal
+  start_interface_id: UI-KARATE-02
+  event_id: EVT-KARATE-R002-02A-1
+  function_id: FN-KARATE-15
+  data_store_operations: []
+  end_interface_id: UI-KARATE-03
+  preconditions:
+  - 図中の分岐条件：入力欄を表示
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 入力欄を表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02A-1-1
+- interaction_id: INT-KARATE-R002-02A-2-1
+  name: 保存済み
+  flow_type: normal
+  start_interface_id: UI-KARATE-03
+  event_id: EVT-KARATE-R002-02A-2
+  function_id: FN-KARATE-02
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：保存済み
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 新会員を保存し、一覧を再取得
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02A-2-1
+- interaction_id: INT-KARATE-R002-02A-2-2
+  name: 入力不正／保存失敗／結果不明
+  flow_type: exception
+  start_interface_id: UI-KARATE-03
+  event_id: EVT-KARATE-R002-02A-2
+  function_id: FN-KARATE-02
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - C
+  end_interface_id: UI-KARATE-03
+  preconditions:
+  - 図中の分岐条件：入力不正／保存失敗／結果不明
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 名前と理由を表示。結果不明なら保存済みの可能性を明示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02A-2-2
+- interaction_id: INT-KARATE-R002-02A-3-1
+  name: 戻って一覧取得
+  flow_type: normal
+  start_interface_id: UI-KARATE-03
+  event_id: EVT-KARATE-R002-02A-3
+  function_id: FN-KARATE-14
+  data_store_operations:
+  - data_store_id: DS-KARATE-02
+    operations:
+    - R
+  end_interface_id: UI-KARATE-02
+  preconditions:
+  - 図中の分岐条件：戻って一覧取得
+  - CRUDは機能が行い得る操作。失敗・結果不明では実施済みとは断定しない。
+  expected_results:
+  - 入力を保存せず一覧へ。取得失敗なら一覧のエラー表示
+  unknown_ids: []
+  source_locations:
+  - planning/ifdam-r002/index.html#INT-KARATE-R002-02A-3-1
+unknowns: []

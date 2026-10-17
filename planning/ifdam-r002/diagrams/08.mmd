@@ -1,0 +1,32 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U25["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>復旧の指示</b><br/><small>IF-KARATE-25</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>指定コピー・復旧結果</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>復元する正常コピー<br/>依頼者の復旧判断</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>復旧を実行</td></tr></table>"]:::ui
+  F11(["正常コピーから復旧する<br/>FN-KARATE-11"]):::function
+  D01[("アカウント<br/>DS-KARATE-01")]:::data
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  D03[("道場<br/>DS-KARATE-03")]:::data
+  D04[("出席<br/>DS-KARATE-04")]:::data
+  D05[("操作の確認情報<br/>DS-KARATE-05")]:::data
+  D06[("訂正履歴<br/>DS-KARATE-06")]:::data
+  D07[("バックアップ<br/>DS-KARATE-07")]:::data
+  D08[("試作参加許可<br/>DS-KARATE-08")]:::data
+  D09[("運用記録<br/>DS-KARATE-09")]:::data
+  E1@{ shape: bang, label: "復旧を実行する<br/>E1" }
+  class E1 event
+  U25 --> E1
+  E1 --> F11
+  F11 -->|"復元・検証成功 [1.1]"| U25
+  F11 -->|"復元／検証失敗 [1.2]"| U25
+  F11 -.->|"C / U / D"| D01
+  F11 -.->|"C / U / D"| D02
+  F11 -.->|"C / U / D"| D03
+  F11 -.->|"C / U / D"| D04
+  F11 -.->|"C / U / D"| D05
+  F11 -.->|"C / U / D"| D06
+  F11 -.->|"C / U / D"| D08
+  D07 -.->|R| F11
+  F11 -.->|"C"| D09
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

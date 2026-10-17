@@ -556,5 +556,8 @@
       "interpretation_priority": "approved-human-artifact",
       "required_action": "update-ai-source-and-regenerate"
     }
-  }
+  },
+  "historical_source": true,
+  "review_status": "withdrawn",
+  "superseded_for_current_review_by": "planning/ifdam-r002/index.html"
 }

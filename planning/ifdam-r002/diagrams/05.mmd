@@ -1,0 +1,20 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U21["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>試作準備の指示</b><br/><small>IF-KARATE-21</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>指定した内容・準備結果</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>許可参加者<br/>試験用道場名</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>準備を実行</td></tr></table>"]:::ui
+  F08(["参加者と道場を準備する<br/>FN-KARATE-08"]):::function
+  D03[("道場<br/>DS-KARATE-03")]:::data
+  D08[("試作参加許可<br/>DS-KARATE-08")]:::data
+  E1@{ shape: bang, label: "準備を実行する<br/>E1" }
+  class E1 event
+  U21 --> E1
+  E1 --> F08
+  F08 -->|"準備成功 [1.1]"| U21
+  F08 -->|"準備失敗 [1.2]"| U21
+  D03 -.->|R| F08
+  F08 -.->|"C"| D03
+  D08 -.->|R| F08
+  F08 -.->|"C"| D08
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

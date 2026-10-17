@@ -1,0 +1,34 @@
+flowchart LR
+%% R002: screen compartments / event burst / function ellipse (render.cjs) / datastore cylinders
+  U23["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>日次バックアップ開始</b><br/><small>IF-KARATE-23</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>保存対象と非公開保存先</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>日次時刻になる</td></tr></table>"]:::ui
+  U24["<table style='width:218px;border-collapse:collapse;font-size:16px;line-height:1.4'><tr><td><b>バックアップ結果</b><br/><small>IF-KARATE-24</small></td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>表示</b><br/>成否・時刻・コピー識別情報<br/>失敗理由・正常コピーの時点</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>入力</b><br/>なし</td></tr><tr><td style='border-top:1px solid rgb(119,136,153);padding:7px;text-align:left'><b>操作</b><br/>結果を確認</td></tr></table>"]:::ui
+  F10(["バックアップを保存する<br/>FN-KARATE-10"]):::function
+  D01[("アカウント<br/>DS-KARATE-01")]:::data
+  D02[("会員<br/>DS-KARATE-02")]:::data
+  D03[("道場<br/>DS-KARATE-03")]:::data
+  D04[("出席<br/>DS-KARATE-04")]:::data
+  D05[("操作の確認情報<br/>DS-KARATE-05")]:::data
+  D06[("訂正履歴<br/>DS-KARATE-06")]:::data
+  D07[("バックアップ<br/>DS-KARATE-07")]:::data
+  D08[("試作参加許可<br/>DS-KARATE-08")]:::data
+  D09[("運用記録<br/>DS-KARATE-09")]:::data
+  E1@{ shape: bang, label: "日次時刻になる<br/>E1" }
+  class E1 event
+  U23 --> E1
+  E1 --> F10
+  F10 -->|"保存・検証成功 [1.1]"| U24
+  F10 -->|"作成／転送／検証失敗 [1.2]"| U24
+  D01 -.->|R| F10
+  D02 -.->|R| F10
+  D03 -.->|R| F10
+  D04 -.->|R| F10
+  D05 -.->|R| F10
+  D06 -.->|R| F10
+  D08 -.->|R| F10
+  D07 -.->|R| F10
+  F10 -.->|"C / U / D"| D07
+  F10 -.->|"C"| D09
+  classDef ui fill:#fff,stroke:#385965,stroke-width:1.5px
+  classDef event fill:#fff2c7,stroke:#9b770e
+  classDef function fill:#e0f2ec,stroke:#147864,stroke-width:2px
+  classDef data fill:#eaf0f8,stroke:#547397

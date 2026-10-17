@@ -219,5 +219,8 @@
       "INT-KARATE-05-08",
       "試作終了後30日以内の通常保存・Drive・試験コピー・履歴・識別情報削除"
     ]
-  ]
+  ],
+  "historical_source": true,
+  "review_status": "withdrawn",
+  "superseded_for_current_review_by": "planning/ifdam-r002/index.html"
 }
